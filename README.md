@@ -59,7 +59,7 @@ WaytoAGI 认证讲师 & 视频学社主理人 & AI工具测评专家
     <td width="33%" align="center"><img src="examples/gallery/results/case-03-kitten-result.webp" alt="小猫照片诗意明信片效果图"><br><strong>03 · 玉米旁的小猫</strong><br><a href="examples/gallery/sources/case-03-kitten-source.webp">查看原图</a></td>
   </tr>
   <tr>
-    <td width="33%" align="center"><img src="examples/gallery/results/case-04-flower-arch-result.webp" alt="花环照片诗意明信片效果图"><br><strong>04 · 夏日花环</strong><br><a href="examples/gallery/sources/case-04-flower-arch-source.webp">查看原图</a></td>
+    <td width="33%" align="center"><img src="examples/gallery/results/case-04-golden-hall-result.webp" alt="金殿照片诗意明信片效果图"><br><strong>04 · 金殿</strong><br><a href="examples/gallery/sources/case-04-golden-hall-source.webp">查看原图</a></td>
     <td width="33%" align="center"><img src="examples/gallery/results/case-05-portrait-result.webp" alt="人物照片诗意明信片效果图"><br><strong>05 · 水上人物</strong><br><a href="examples/gallery/sources/case-05-portrait-source.webp">查看原图</a></td>
     <td width="33%" align="center"><img src="examples/gallery/results/case-06-riverside-result.webp" alt="水岸游船照片诗意明信片效果图"><br><strong>06 · 水岸游船</strong><br><a href="examples/gallery/sources/case-06-riverside-source.webp">查看原图</a></td>
   </tr>

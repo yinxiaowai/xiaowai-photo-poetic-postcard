@@ -50,7 +50,7 @@ These are verified outputs made from authorized source photos in one complete im
     <td width="33%" align="center"><img src="examples/gallery/results/case-03-kitten-result.webp" alt="Kitten poetic postcard result"><br><strong>03 · Kitten and corn</strong><br><a href="examples/gallery/sources/case-03-kitten-source.webp">View source</a></td>
   </tr>
   <tr>
-    <td width="33%" align="center"><img src="examples/gallery/results/case-04-flower-arch-result.webp" alt="Flower arch poetic postcard result"><br><strong>04 · Summer flower arch</strong><br><a href="examples/gallery/sources/case-04-flower-arch-source.webp">View source</a></td>
+    <td width="33%" align="center"><img src="examples/gallery/results/case-04-golden-hall-result.webp" alt="Golden Hall poetic postcard result"><br><strong>04 · Golden Hall</strong><br><a href="examples/gallery/sources/case-04-golden-hall-source.webp">View source</a></td>
     <td width="33%" align="center"><img src="examples/gallery/results/case-05-portrait-result.webp" alt="Portrait poetic postcard result"><br><strong>05 · Waterside portrait</strong><br><a href="examples/gallery/sources/case-05-portrait-source.webp">View source</a></td>
     <td width="33%" align="center"><img src="examples/gallery/results/case-06-riverside-result.webp" alt="Riverside boat poetic postcard result"><br><strong>06 · Riverside boat</strong><br><a href="examples/gallery/sources/case-06-riverside-source.webp">View source</a></td>
   </tr>

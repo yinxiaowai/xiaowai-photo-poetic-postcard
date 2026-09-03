@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.1 - 2026-09-04
+
+- Replaced the flower-arch gallery case with a new Golden Hall source and verified 3:4 one-shot result.
+- Recorded the visible `金殿` plaque as subject-name evidence without inventing a broader location.
+- Made WorkBuddy package metadata read its version from the repository `VERSION` file.
+
 ## 1.0.0 - 2026-09-03
 
 - Rebuilt the private Codex workflow as a model-neutral Agent Skill.

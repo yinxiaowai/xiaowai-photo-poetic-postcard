@@ -12,6 +12,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SKILL_NAME = "xiaowai-photo-poetic-postcard"
+VERSION = (ROOT / "VERSION").read_text(encoding="utf-8").strip()
 STANDARD_ITEMS = (
     "SKILL.md",
     "agents",
@@ -21,14 +22,14 @@ STANDARD_ITEMS = (
     "NOTICE.md",
     "VERSION",
 )
-WORKBUDDY_FRONTMATTER = """---
+WORKBUDDY_FRONTMATTER = f"""---
 name: xiaowai-photo-poetic-postcard
 display_name: 照片诗意明信片
 display_name_en: Photo Poetic Postcard
 description: 将一张照片制作成上方原摄影、下方单一主元素艺术转绘的一张诗意明信片；可在缺少生图能力时输出完整提示词。
 description_zh: 一张原图生成一张可定制的照片与艺术转绘双画面明信片。
 description_en: Turn one photo into one customizable poetic photo-and-illustration postcard.
-version: 1.0.0
+version: {VERSION}
 author: AI尹小歪
 ---
 """
