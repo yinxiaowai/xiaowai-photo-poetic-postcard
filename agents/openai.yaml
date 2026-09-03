@@ -1,0 +1,6 @@
+interface:
+  display_name: "照片诗意明信片"
+  short_description: "一张原图生成一张可定制的摄影与艺术转绘明信片"
+  default_prompt: "使用 $xiaowai-photo-poetic-postcard，在一次生图中把照片制作成精确 3:4 明信片；上方照片满幅无边框，下方只提取一个主体并保留充足留白，文字与三枚色卡按负空间灵活布局。"
+policy:
+  allow_implicit_invocation: true

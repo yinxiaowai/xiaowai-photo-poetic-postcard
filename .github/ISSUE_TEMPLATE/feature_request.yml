@@ -1,0 +1,26 @@
+name: Feature request
+description: Suggest a platform, parameter, style, or workflow improvement
+title: "[Feature] "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: use_case
+    attributes:
+      label: Use case
+      description: What are you trying to make, and on which Agent or image tool?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+    validations:
+      required: true
+  - type: checkboxes
+    id: invariants
+    attributes:
+      label: Core workflow
+      options:
+        - label: This proposal keeps one source photo → one final image and one extracted lower-panel subject.
+          required: true
+

@@ -1,0 +1,45 @@
+name: Bug report
+description: Report a Skill, prompt, generation, or packaging problem
+title: "[Bug] "
+labels: [bug]
+body:
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      options:
+        - Codex / ChatGPT desktop
+        - Claude Code
+        - WorkBuddy
+        - Gemini CLI
+        - Dreamina
+        - Doubao
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: capability
+    attributes:
+      label: Available image capabilities
+      description: State whether the host could inspect images, generate/edit images, and run local scripts.
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy check
+      options:
+        - label: I removed private photos, personal data, and credentials from this report.
+          required: true

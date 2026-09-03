@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title id="title">Photo Poetic Postcard icon</title>
+  <rect width="512" height="512" rx="112" fill="#FFFAF5"/>
+  <rect x="122" y="72" width="268" height="368" rx="18" fill="#FFFFFF" stroke="#2F2A25" stroke-width="10"/>
+  <rect x="144" y="94" width="224" height="158" rx="4" fill="#AFC0BA"/>
+  <path d="M144 212 C190 163 226 197 266 158 C302 124 335 143 368 118 L368 252 L144 252Z" fill="#506C65"/>
+  <circle cx="320" cy="132" r="24" fill="#E7BD7D"/>
+  <path d="M171 354 C209 282 290 280 345 338 C316 388 229 402 171 354Z" fill="#C46A32" opacity="0.22"/>
+  <path d="M207 357 C226 317 260 299 294 316 C314 326 322 351 311 373 C276 391 236 387 207 357Z" fill="none" stroke="#A16207" stroke-width="10" stroke-linecap="round"/>
+  <rect x="164" y="397" width="16" height="16" fill="#506C65"/>
+  <rect x="188" y="397" width="16" height="16" fill="#C46A32"/>
+  <rect x="212" y="397" width="16" height="16" fill="#D8B48A"/>
+</svg>
+

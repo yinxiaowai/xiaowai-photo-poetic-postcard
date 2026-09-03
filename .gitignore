@@ -1,0 +1,16 @@
+dist/
+*.zip
+__pycache__/
+*.py[cod]
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+.venv/
+venv/
+examples/private/
+examples/raw/
+examples/work/
+examples/gallery/sources/*.png
+examples/gallery/sources/*.jpg
+examples/gallery/results/*.png
