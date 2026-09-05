@@ -130,7 +130,7 @@ Use xiaowai-photo-poetic-postcard to turn this photo into one poetic postcard.
 
 ## Method 2: use the Prompt MD directly
 
-If your Agent cannot install Skills, upload the photo and paste one complete file:
+No project installation is needed. Upload one photo and attach either MD file to an Agent, or paste its full text:
 
 | Language | File |
 | --- | --- |
@@ -139,20 +139,24 @@ If your Agent cannot install Skills, upload the photo and paste one complete fil
 
 This is the recommended route for Dreamina, Doubao, and other image-capable Agents without a documented GitHub Skill installer.
 
-See the [resolved Xiaoqikong example](references/example-xiaoqikong-compiled-prompt.zh-CN.md) to understand what a fully compiled image-model prompt looks like. Its place, subject, colors, and copy are example-specific and must not be reused for other photos.
+Each file is a self-contained **16-section drawing guide** covering image roles, subject selection and omission, subject-specific decisions, panels, crop conflicts, media, scale and whitespace, paper and washes, place evidence and copy, typography, swatches, customization, host capabilities, correction, and delivery. No template fields or other repository files are needed.
 
-> **Paste the complete file and do not let an intermediary Agent summarize it.** Before calling an image model, the instructions require a concrete extracted subject, a photo-specific omission list, exact copy, three colors, and resolved layout positions. A one-paragraph prompt that merely says “keep the photo above and repaint the same scene below” indicates a failed handoff; stop and use the complete file again.
+Ask the Agent to process your photo using the attached guide. It decides unspecified layout, copy, colors, and brushwork from the image. Add adjustments in ordinary language, such as “make the lower area airier, use light ink, and omit swatches.”
 
-## Why this version is more robust across Agents
+The [Xiaoqikong example](references/example-xiaoqikong-compiled-prompt.zh-CN.md) is optional reading to illustrate one application. It is not required for Method 2, and its place, copy, and colors are specific to that photo.
 
-The standalone prompt is an end-to-end execution contract rather than a set of style keywords:
+## Cross-Agent execution design
+
+The guide explains decisions; the main Skill's five-section template conveys resolved instructions to a separate image model. Method 2 contains everything it needs independently:
 
 1. The default 3:4 canvas is strictly divided into two independent 50% regions.
-2. The main Skill embeds the complete Chinese downstream template, so success does not depend on the host following a reference link.
+2. The main Skill embeds the Chinese handoff template and requires reading the complete drawing guide; Method 2 needs no other files.
 3. The Agent must resolve one concrete subject and a photo-specific omission list; “the whole landscape” or “the same scene” is invalid.
-4. The final image-model prompt must preserve all five sections and may not be summarized into one paragraph.
+4. Image-tool calls preserve sections and all active requirements while resolving observations into specific decisions; no lossy summary.
 5. The three swatches have a testable size rule: each is a perfect solid square about `1/20` of lower-panel width.
-6. Generation is blocked until the prompt includes every required section, subject, omission, exact copy, three colors, and delivery constraint.
+6. Pre-generation checks follow active requirements; explicit no-text, no-swatch, and language choices update the defaults and checks together.
+
+These are execution rules and design goals, not evidence of successful testing in every Agent or image model. Repository validation checks documents and packages; visual behavior still needs testing in the target environment.
 
 ## Capability fallback
 

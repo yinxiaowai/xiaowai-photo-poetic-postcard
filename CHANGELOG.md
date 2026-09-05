@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.2.0 - 2026-09-05
+
+- Clarified that zero-margin full-bleed photography reaches the panel boundary; paper and breathing room belong only to the lower panel. Added an explicit rejection check for inset photos and thin frames.
+- Rewrote both standalone Prompt MD files as complete 16-section drawing guides, usable with one photo and no repository, template fields, or external files.
+- Added decision criteria for subject selection, attached cues, concrete omissions, different subject types, crop conflicts, detail density, whitespace, typography, and adaptive swatch placement.
+- Made explicit customization override default-only checks, including no text, hidden swatches, another language, and custom geometry.
+- Updated the main Skill to read the complete drawing method before compiling an image-tool prompt; retained the one-shot whole-image workflow.
+- Updated bilingual Method 2 and installation instructions to attach the MD or paste its entire text.
+- Document and package checks do not establish successful image generation in Dreamina or any other untested host.
+
 ## 1.1.0 - 2026-09-05
 
 - Added a mandatory downstream prompt compiler directly to `SKILL.md` so intermediary Agents cannot replace the full contract with a one-paragraph summary.

@@ -54,6 +54,7 @@ The subject needs a complete, natural silhouette with watercolor edges dissolvin
 - One portrait canvas, normally 3:4.
 - Upper and lower regions share one horizontal axis, default to two equal 50% regions, and are generated as one integrated composition.
 - The photo fills the upper region edge to edge and touches the canvas top, left, and right edges. There is no paper margin, hairline, outline, border, or frame around it.
+- Its bottom edge meets the panel boundary without a paper strip or divider stroke. Paper texture and breathing room belong only to the lower region; never place a smaller photo on an ivory mat around the whole composition.
 - Use cover-style cropping when source and target ratios differ. Crop only what is necessary, preserve the main subject, never stretch the photo, and never invent an extension.
 - The lower main element stays contained and never touches the edges. Position it left, center, or right according to its silhouette and the available negative space.
 - Preserve at least about 45% of the lower panel as visibly quiet paper. Horizontal or detailed subjects may use about 55–70% of lower-panel width; people, animals, rings, and compact subjects normally use about 40–55%.

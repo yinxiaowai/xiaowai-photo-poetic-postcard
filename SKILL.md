@@ -27,7 +27,7 @@ Do not require a specific vendor or model. Use the strongest reference-image gen
 
 ## Resolve one content card
 
-Read [the visual system](references/postcard-design.md), inspect the photo, and resolve every field before generation:
+Read the [standalone Chinese drawing guide](references/photo-poetic-postcard-prompt.zh-CN.md) or [English drawing guide](references/photo-poetic-postcard-prompt.en.md) in full before generation. Each contains the complete selection, composition, customization, and correction method and works without this entrypoint. The [visual system](references/postcard-design.md) is an optional compact reference. Inspect the photo and resolve every applicable field:
 
 - `main_subject`: exactly one visual center to reinterpret, never “the whole scene”;
 - `identity_cues`: zero to three features belonging to, touching, or directly interacting with that subject;
@@ -44,15 +44,20 @@ Resolve place identity in this order: a name explicitly supplied by the user; le
 
 Default to one exact 3:4 portrait image, strict 50/50 upper/lower regions, warm low-saturation ivory fiber paper, transparent watercolor plus light gouache and a trace of colored pencil, one concise Chinese title, one natural Chinese note, and exactly three swatches. Honor explicit user changes to dimensions, split, medium, paper, scale, position, language, typography, copy, palette, swatches, or layout while preserving the core invariants.
 
+Paper and breathing room apply only to the lower panel. The upper photo has zero margins: it covers the full canvas width from the top edge to the panel boundary. Never interpret “postcard paper” as an outer mat around the photograph or the whole work.
+
 ## Mandatory downstream prompt contract
 
-Fill every brace with image-specific content. Remove braces before sending. Keep the five section headings and all applicable constraints. For Chinese-capable image Agents such as Dreamina or Doubao, use this Chinese prompt directly. For an English-only image model, translate the filled content without deleting or merging sections.
+Use the detailed drawing guide to make decisions first; the block below is only the image-tool handoff format, not a substitute for the guide. Fill every brace with image-specific content. Remove braces before sending. Keep the five section headings and all applicable constraints. For Chinese-capable image Agents such as Dreamina or Doubao, use this Chinese prompt directly. For an English-only image model, translate the filled content without deleting or merging sections.
+
+Apply explicit user overrides before compiling: omit text and its checks when no text is requested; omit swatches and their checks when hidden; replace the Chinese-only restriction when another language is requested; resolve a custom split or ratio consistently throughout the prompt. Remove the conditional place-name sentence when no place is confirmed. Choose subject scale by shape, not by a single universal percentage. Keep a naturally cropped source subject rather than inventing unseen anatomy or structure to complete its silhouette.
 
 ```text
 【画面结构】
 根据上传的唯一一张原图，生成一张完整的{画布比例或像素尺寸；默认精确3:4竖版}诗意明信片。整张画布严格水平分成上下两个独立区域，默认上下等高、各占50%；只有用户明确指定其他比例时才允许改变。绝对不允许整张图全部转绘：上半区必须保留原摄影，下半区才做艺术转绘。上方照片、下方转绘、纸张、标题、短注、三枚色卡和全部排版必须在同一次生图中一次性生成；禁止先生成局部后拼接，禁止事后用程序排字或贴色卡。所有文字和色卡100%限制在下半区，不能进入上半区。最终只交付一张完整成品，禁止主动生成四种风格、四张候选、四宫格、对比图或单独的下半图。
 
 【上半区｜原摄影锁定】
+上方满版、下方留白，两个区域不可混用留白规则。摄影必须覆盖从整张画布顶部到上下分界线的完整横向矩形，照片底边直接抵达分界线，无纸条、无分隔描线；不是把照片缩小后摆在纸面上。纸张肌理与留白只在下半区，不能形成整图米白外框。
 上半区使用上传的原摄影，原图主体为{photo_subject}，关键空间与视觉关系为{key_relations}。以cover方式铺满整个上半区，贴齐整张画布顶部、左边和右边，不留纸边、白边、描边、轮廓线、边框、相框或阴影。只允许为铺满上半区进行必要的等比裁切；不得拉伸，不得生成式扩图，并应保住主要主体。完整保留原图的主体、光影、色彩、空间关系和摄影质感，不得重画、替换、美化、修饰、增删或改写任何摄影内容。上半区除原摄影外绝对不能出现文字、色卡或其他元素。
 
 【下半区｜单一主体转绘】
@@ -69,8 +74,11 @@ Fill every brace with image-specific content. Remove braces before sending. Keep
 
 Do not invoke the image tool until the compiled prompt passes every item:
 
+Check the active brief: text and palette items below apply only when enabled, and default geometry phrases are replaced by explicit user settings. A user's valid customization must not fail a default-only check.
+
 - contains all five exact section headings;
 - contains `上下两个独立区域` and the resolved split, defaulting to `上下等高、各占50%`;
+- explicitly locks the photo to the canvas top, left, right, and panel boundary with zero paper margins or outlines, and confines paper and breathing room to the lower panel;
 - identifies one concrete `main_subject`; “same scene,” “whole landscape,” or an unresolved placeholder is not valid;
 - contains `只提取并转绘` followed by that concrete subject;
 - contains a concrete `omit_list` naming visible background elements from this photo;
@@ -97,6 +105,7 @@ The lower result must read as one illustrated subject on paper, not a second rec
 ## Composition rules
 
 - The source photo fills the upper region edge to edge and touches the top and both side edges. No paper gap, hairline, border, outline, frame, or generative extension.
+- Its bottom edge meets the panel boundary directly, without a paper strip or divider stroke. Reject a photograph inset on a paper mat, even if the lower illustration is correct.
 - The lower subject may shift left, center, or right according to its silhouette. Detailed horizontal subjects normally use about 55%–70% of lower width; people, animals, rings, and compact objects normally use about 40%–55%.
 - Keep at least about 45% of the lower panel visibly quiet. Remove environmental cues before enlarging the design.
 - Place the exact title/note and the three-swatches group only after reading actual negative space. Do not default every result to lower-right.
@@ -111,6 +120,8 @@ Do not ask for four styles or multiple candidates. If the host automatically ret
 If text, ratio, extraction, swatches, or photo fidelity fails, correct the same complete design through image generation while restating the full contract. If the host cannot preserve the upper photograph, state the limitation and recommend a stronger reference-image model rather than silently switching to a stitched workflow.
 
 ## Acceptance checklist
+
+Apply this checklist to the resolved brief: disabled text or swatches must be absent, and explicit custom geometry replaces the defaults.
 
 - One exact requested-ratio image; for the default, width divided by height equals 0.75. A 2:3 result fails.
 - Strict upper/lower regions at the resolved split; default is 50/50.

@@ -55,15 +55,15 @@ This project does not claim an unverified GitHub Skill installer for these produ
 
 1. Open an image-capable Agent or creation workspace.
 2. Upload one source photo.
-3. Paste the code block from the [Chinese](../references/photo-poetic-postcard-prompt.zh-CN.md) or [English](../references/photo-poetic-postcard-prompt.en.md) prompt.
-
-Paste the complete file or complete code block. Do not copy only the style paragraph, and do not accept a one-paragraph summary written by an intermediary Agent. The actual image-model prompt must preserve the full section structure and name the photo-specific subject, concrete omission list, title, note, three colors, text position, and swatch position.
-4. Set any desired dimensions, split, medium, or copy.
+3. Attach the [Chinese](../references/photo-poetic-postcard-prompt.zh-CN.md) or [English](../references/photo-poetic-postcard-prompt.en.md) drawing guide, or paste its full text.
+4. Add dimensions, split, medium, or copy preferences in ordinary language, or proceed with automatic decisions.
 5. Keep one final image; reject multi-image grids.
+
+The MD contains the complete observation and drawing method. No template fields or additional project files are needed. The Agent resolves the subject, omissions, and layout from the photo, then conveys those decisions and active requirements to the image model.
 
 ## Basic image tools
 
-If the tool accepts a reference image but cannot analyze it conversationally, first ask a vision-capable Agent to identify the main element, supporting cues, three colors, title, and note. Fill those details into the prompt before generation.
+If the tool understands reference images and long instructions, upload the source and paste the complete guide. Otherwise ask a vision-capable Agent to apply the standalone guide to the photo and produce concrete drawing instructions. Use those with the same source image, preserving the panel, subject, omission, copy, and swatch requirements that apply.
 
 If reference images are unsupported, the workflow cannot reliably preserve or derive from the source photo and should not be described as fully completed.
 
