@@ -15,6 +15,7 @@ Resolve these once before generating:
 | Place evidence | Name + source + confidence | User statement > legible sign/EXIF/geotag > uniquely identifiable landmark with high confidence |
 | Title | Confirmed place name or scene-based Chinese title | A confirmed place must appear verbatim in the title or note; otherwise never guess |
 | Note | 6–10 Chinese characters | Quiet, natural postcard tone; no invented facts |
+| Typography | Agent-selected for this image | Match subject, mood, medium, and legibility; no default Song font; explicit user choice takes priority |
 | Colors | Three sampled colors | Distinct, representative, fixed order |
 | Canvas | 3:4 portrait | Use the user's ratio or dimensions when provided |
 | Panel split | Strict 50 / 50 | Default to two equal independent regions for maximum cross-model reliability; change only when the user explicitly asks |
@@ -33,6 +34,12 @@ Determine location before writing the copy:
 5. If evidence is insufficient or ambiguous, use scene-based copy and do not guess.
 
 Record the evidence source and confidence in the content card. Visible text can establish the photographed subject, such as a clearly readable plaque, but do not infer a broader city or region that the evidence does not establish.
+
+## Copy and type decisions
+
+Automatically compose ordinary Chinese copy with common simplified characters and familiar, natural wording; avoid needless glyph complexity for literary effect. This is not a stroke-count limit. Never simplify or substitute confirmed names or user-provided wording without permission. If rendering fails, improve size, spacing, contrast, or type clarity first; simplify only original non-name copy when necessary and regenerate the complete image.
+
+Choose one concrete type treatment from the actual subject, mood, medium, and copy density. Clear handwriting is available by default for relaxed everyday scenes; regular script, serifs, rounded lettering, and humanist sans are also options, not mandatory subject-to-font mappings. Do not force Song onto every photo or rotate fonts randomly. Specify clear strokes, readable weight and spacing in the image prompt; avoid tangled cursive and excessive type mixing. A user's requested font overrides automatic selection; do not claim exact font-file use without verification.
 
 ## Main-element extraction
 
@@ -83,7 +90,7 @@ Do not add geometric collage, large opaque blocks, decorative stickers, drop sha
 | Subject position | left, center, right; slightly high or low | Keep intentional whitespace |
 | Paper | warm ivory, cool gray-white, handmade fiber, smooth museum stock | Quiet low-contrast field |
 | Text | custom title/note, another language, no text | Exact spelling; no extra copy |
-| Typography | modern Song/serif, sans, handwritten, supplied font | Legibility and hierarchy |
+| Typography | Automatically scene-matched; handwriting, regular script, rounded, serif, sans, or user-specified | Legibility and hierarchy; no fixed default family |
 | Swatches | reposition, recolor from photo, hide | If shown, exactly three solid squares; each side is about 1/20 of lower-panel width |
 | Color | faithful, muted, warmer, cooler, monochrome accent | Traceable to source; avoid arbitrary palette replacement |
 | Layout | subject may shift left/center/right; text and swatch group may use any lower-panel corner | Choose from actual negative space; do not repeat one default layout |

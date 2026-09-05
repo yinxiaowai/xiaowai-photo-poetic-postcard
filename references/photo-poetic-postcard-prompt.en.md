@@ -155,9 +155,22 @@ Without a confirmed place, compose from visible subjects, actions, light, or moo
 
 Preserve user-supplied wording exactly. This English guide also defaults to Chinese artwork copy; switch languages only when requested. Choose suitable copy yourself when unspecified, without asking the user to fill a title template.
 
+For automatically composed Chinese copy, prefer common simplified characters, familiar words, and natural short phrases. When meanings are comparable, choose distinguishable glyph structures rather than rare or densely complex characters for ornamental literary effect. An ordinary poetic phrase using “潋滟” could be rewritten around “水面微光” (light on water); this demonstrates simplification, not a repeated caption for every photo. Do not impose a universal stroke-count cap or ban all complex characters.
+
+This applies only to ordinary copy composed by the Agent. Preserve confirmed place, landmark, and personal names and user-supplied wording exactly, even when their characters are complex. Do not delete characters, substitute homophones, abbreviate, or romanize them without permission. Simplify surrounding original copy, increase type size, or choose clearer lettering instead. Disclose persistent glyph errors rather than calling an inaccurate result compliant.
+
 ## 11. Typography and copy placement
 
-Default to a clear contemporary Song-style Chinese serif, with a larger title and lighter note in one compact group. Architecture may suit a steadier face and nature a lighter humanist treatment. Use handwriting only when requested or when legibility allows.
+The Agent actively selects typography from the image by default; there is no preset Song font and no need for the user to request a change. Consider subject, mood, and illustration medium, then copy length, glyph complexity, and display size. Choose one clear, compatible main treatment. Honor an explicit user font choice.
+
+- Everyday life, pets, and relaxed portraits may suit natural handwriting, clear handwritten regular script, or gently rounded lettering.
+- Historic architecture, old bridges, and quiet cultural scenes may suit upright bookhand, restrained regular script, or Song-style serifs.
+- Contemporary architecture, city life, and minimal compositions may suit humanist sans or clean sans-serif lettering.
+- Airy natural subjects may suit open handwriting or light lettering that remains thick enough to read.
+
+These are possibilities, not fixed subject-to-font mappings. The same subject can call for different typography depending on mood and medium. Do not rotate fonts randomly or force all work into either Song or handwriting. Usually keep one main treatment, using size and weight to distinguish the larger title from the lighter note in a compact group.
+
+Handwriting must retain distinguishable glyphs, complete strokes, and comfortable spacing. Avoid tangled cursive, broken strokes, elaborate decoration, and ultra-thin small text. Specify the selected treatment in the image-tool prompt, such as “natural handwritten regular script, clear complete strokes, slight handmade variation, no joined cursive.” Do not merely say “choose a suitable font” or pass a menu of alternatives to be mixed. Do not claim exact use of a named font file without verification.
 
 Choose a deeper source-derived text color with sufficient contrast against the paper, not automatically the brightest accent.
 
@@ -228,13 +241,15 @@ Check composition before fine detail:
 3. The lower area contains only the selected subject and necessary attached cues; concrete omitted background objects did not return.
 4. Scale is balanced and clean paper remains around the subject; it is not a smaller complete landscape painting.
 5. Confirmed place names appear and unconfirmed locations were not invented.
-6. Text is exact, readable, and entirely below.
+6. Text is exact, readable, scene-matched in typography, and entirely below; original ordinary copy avoids needless glyph complexity without altering names or user wording.
 7. Swatch count, shape, size, fill, and placement are correct, or absent when requested.
 8. There is no extra decoration, instructional copy, logo, signature, watermark, frame, or candidate grid.
 
 Correct the cause: remove restored scenery for a full-scene repeat; reduce the subject and wash for crowding; add internal subject detail for sparseness; reposition copy when cramped; enforce uniform fill when swatches resemble fragments.
 
 Corrections must still regenerate or edit the complete work through image generation, never programmatic stitching, cropping of the finished art, or text overlays. If the tool persistently cannot satisfy the request, state the failed criterion rather than claiming compliance or generating indefinitely.
+
+For glyph errors, first inspect size, spacing, contrast, and overly decorative lettering, then use a clearer treatment still suited to the scene. If needed, simplify only automatically composed ordinary copy. Keep confirmed names and user text unchanged; do not quietly rewrite them to pass inspection. Send the exact revised wording and selected typography in the complete image-generation prompt.
 
 ## 16. Final delivery
 

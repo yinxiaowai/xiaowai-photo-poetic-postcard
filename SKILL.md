@@ -35,6 +35,7 @@ Read the [standalone Chinese drawing guide](references/photo-poetic-postcard-pro
 - `photo_subject` and `key_relations`: facts the upper photo must preserve;
 - `complexity`, `medium`, `subject_scale`, and `subject_position`;
 - exact `title` and `note` text;
+- `typography`: one concrete, scene-matched type treatment with readable strokes and spacing, chosen automatically unless specified by the user;
 - `place_name`, evidence source, and confidence;
 - exactly three representative source-photo colors in fixed order;
 - exact lower-panel positions for the subject, text group, and swatch group;
@@ -47,6 +48,16 @@ Default to one exact 3:4 portrait image, strict 50/50 upper/lower regions, warm 
 Paper and breathing room apply only to the lower panel. The upper photo has zero margins: it covers the full canvas width from the top edge to the panel boundary. Never interpret “postcard paper” as an outer mat around the photograph or the whole work.
 
 ## Mandatory downstream prompt contract
+
+### Copy and adaptive typography
+
+For automatically composed Chinese copy, prefer common simplified characters, familiar words, and natural short phrases. Avoid rare or unnecessarily dense glyphs used only for ornamental literary effect; do not impose an arbitrary stroke-count cap or ban all complex characters. Preserve confirmed names and user-supplied wording exactly, simplifying only surrounding original copy.
+
+Actively choose typography from the photo's subject, mood, illustration medium, and text density. There is no default Song font. Everyday life, pets, and relaxed portraits may suit clear natural handwriting; historic architecture may suit restrained regular script or serifs; contemporary scenes may suit humanist sans. These are possibilities, not fixed mappings or random font rotation. Handwriting needs no explicit user request. Honor explicit font choices. Prioritize distinguishable glyphs, complete strokes, and comfortable spacing; avoid tangled cursive, broken strokes, ultra-thin small text, and excessive font mixing. Resolve one concrete treatment in the image prompt, not a list of alternatives or merely “use a suitable font.” Do not claim exact font-file fidelity without verification.
+
+For glyph errors, first improve size, spacing, contrast, or choose a clearer compatible type treatment. If necessary, rewrite only automatically composed non-name copy in simpler words and regenerate the complete card. Never silently alter confirmed names or user wording, or add text with code. Disclose persistent rendering failures.
+
+### Compile the prompt
 
 Use the detailed drawing guide to make decisions first; the block below is only the image-tool handoff format, not a substitute for the guide. Fill every brace with image-specific content. Remove braces before sending. Keep the five section headings and all applicable constraints. For Chinese-capable image Agents such as Dreamina or Doubao, use this Chinese prompt directly. For an English-only image model, translate the filled content without deleting or merging sections.
 
@@ -64,6 +75,7 @@ Apply explicit user overrides before compiling: omit text and its checks when no
 只提取并转绘{main_subject}，不是把整幅原图、同一场景或完整背景再画一遍。仅保留这些最低必要辨识线索：{identity_cues；没有则写“无额外线索”}。明确省略并禁止出现：{omit_list，必须写成与本图对应的具体可见对象}。采用“拆解 → 选择性保留 → 蒸馏 → 重构”，以{medium}表现主体的轮廓、结构、材质和关键配色。主体约占下半区宽度{subject_scale；默认55%—65%}，放在{subject_position}；保持完整自然轮廓，边缘自然消融进纸面，不触碰下半区左右边缘或下边缘。下半区至少保留约45%连续、明显、干净的纸面，密度介于“孤立小图标”和“完整场景水彩”之间。主体后方最多一个紧贴主体的局部、柔和、不规则、半透明色彩晕染；不得形成可识别背景、第二场景、矩形图块或第二主体。
 
 【文字与三枚色卡】
+文案已优先选用常见、自然、易辨认的字词；已确认地名及用户指定原文不作简写或替换。下述字体是根据本图内容、气质和文字密度选定的具体方案，不统一套用宋体；字形清楚、笔画完整、间距舒展，手写风格也不能连笔到难以辨字。
 标题严格写作“{title}”，短注严格写作“{note}”，采用{typography和language}，逐字准确，只出现一次。若地点或景点已确认，准确名称“{place_name}”必须在标题或短注中原样出现；未确认时不得编造。文字组仅放在下半区的{text_position}。另在下半区的{swatch_position}放置三枚从原图提取的色卡，颜色依次为{color_1}、{color_2}、{color_3}。三枚色卡必须等大、极小、完美正方形、紧凑横排；每枚边长约为下半区总宽度的1/20；内部100%均匀纯色平涂。禁止纹理、图案、渐变、圆形、异形、照片切片或第四枚色卡。文字组和色卡组根据真实负空间安排，可位于下半区左上、右上、左下或右下，尽量分处不同空位，不得遮挡主体，也不得固定所有作品都使用同一角落。
 
 【禁止项与交付】
@@ -83,6 +95,7 @@ Check the active brief: text and palette items below apply only when enabled, an
 - contains `只提取并转绘` followed by that concrete subject;
 - contains a concrete `omit_list` naming visible background elements from this photo;
 - contains the exact resolved title, note, text position, swatch position, and three distinct colors;
+- when text is enabled, resolves one scene-matched type treatment and checks original copy for avoidable glyph complexity without altering confirmed names or user wording;
 - contains `三枚`, `完美正方形`, `1/20`, and `100%均匀纯色平涂`;
 - contains the one-shot ban on stitching and programmatic typography;
 - contains `最终只交付一张` and does not request styles or candidates;
@@ -130,6 +143,7 @@ Apply this checklist to the resolved brief: disabled text or swatches must be ab
 - The concrete omit list is absent from the lower panel.
 - Subject remains contained and at least about 45% of the lower paper is visibly quiet.
 - Exact title and note appear only in the lower panel; confirmed place name appears verbatim when applicable.
+- Type treatment suits the actual scene; lettering has no malformed, missing, or substituted glyphs.
 - Exactly three tiny equal solid-color square swatches appear only in the lower panel at the resolved position.
 - No extra text, logo, signature, watermark, border, shadow, grid, comparison, or candidate sheet.
 - Every visible component was generated together; the delivered artifact is one image only.

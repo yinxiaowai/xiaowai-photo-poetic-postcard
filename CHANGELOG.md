@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.2.1 - 2026-09-05
+
+- Replaced the Song-style default with active typography selection based on subject, mood, medium, and readability, including handwriting without a user opt-in.
+- Prefer common, readable Chinese characters in automatically composed copy without arbitrary stroke-count limits; preserve confirmed names and user-supplied wording exactly.
+- Added concrete typography handoff and glyph-error recovery guidance to both standalone guides, the main Skill, and the visual reference.
+- Existing gallery images are unchanged; this instruction update is not a claim of new image-model testing.
+
 ## 1.2.0 - 2026-09-05
 
 - Clarified that zero-margin full-bleed photography reaches the panel boundary; paper and breathing room belong only to the lower panel. Added an explicit rejection check for inset photos and thin frames.

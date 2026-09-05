@@ -177,9 +177,12 @@ These are execution rules and design goals, not evidence of successful testing i
 | Subject position | negative-space driven | left, center, or right, while keeping at least about 45% visibly clean paper |
 | Paper | warm ivory fiber | cool gray-white, handmade fiber, smooth museum stock |
 | Text | Chinese title + short note | custom language/typeface or no text |
+| Typography | Agent-selected from image content, mood, and medium; no default Song font | handwriting, regular script, rounded, serif, or sans; readability first; user-overridable |
 | Swatches | three, grouped in a clear lower-panel corner | reposition or hide; if shown, keep three perfect solid squares, each about 1/20 of lower-panel width |
 | Color | sampled, muted | warmer, cooler, monochrome accent while source-traceable |
 | Layout | resolved after placing the subject | move text and swatches among lower-panel corners; avoid repeating one fixed arrangement |
+
+Original copy favors common characters and natural short phrases without altering confirmed names or user wording. Typography selection is active by default: users need not request a font change, and the Agent should not use rigid subject-to-font mappings or random rotation.
 
 ## Validate and package
 
