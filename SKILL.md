@@ -55,7 +55,7 @@ For automatically composed Chinese copy, prefer common simplified characters, fa
 
 Actively choose typography from the photo's subject, mood, illustration medium, and text density. There is no default Song font. Everyday life, pets, and relaxed portraits may suit clear natural handwriting; historic architecture may suit restrained regular script or serifs; contemporary scenes may suit humanist sans. These are possibilities, not fixed mappings or random font rotation. Handwriting needs no explicit user request. Honor explicit font choices. Prioritize distinguishable glyphs, complete strokes, and comfortable spacing; avoid tangled cursive, broken strokes, ultra-thin small text, and excessive font mixing. Resolve one concrete treatment in the image prompt, not a list of alternatives or merely “use a suitable font.” Do not claim exact font-file fidelity without verification.
 
-For glyph errors, first improve size, spacing, contrast, or choose a clearer compatible type treatment. If necessary, rewrite only automatically composed non-name copy in simpler words and regenerate the complete card. Never silently alter confirmed names or user wording, or add text with code. Disclose persistent rendering failures.
+Copy and typography rules are pre-generation decisions. This workflow does not require post-generation OCR, typo detection, text correction, or typo-triggered retries.
 
 ### Compile the prompt
 
@@ -79,7 +79,7 @@ Apply explicit user overrides before compiling: omit text and its checks when no
 标题严格写作“{title}”，短注严格写作“{note}”，采用{typography和language}，逐字准确，只出现一次。若地点或景点已确认，准确名称“{place_name}”必须在标题或短注中原样出现；未确认时不得编造。文字组仅放在下半区的{text_position}。另在下半区的{swatch_position}放置三枚从原图提取的色卡，颜色依次为{color_1}、{color_2}、{color_3}。三枚色卡必须等大、极小、完美正方形、紧凑横排；每枚边长约为下半区总宽度的1/20；内部100%均匀纯色平涂。禁止纹理、图案、渐变、圆形、异形、照片切片或第四枚色卡。文字组和色卡组根据真实负空间安排，可位于下半区左上、右上、左下或右下，尽量分处不同空位，不得遮挡主体，也不得固定所有作品都使用同一角落。
 
 【禁止项与交付】
-禁止下半区完整场景复刻，禁止保留{omit_list}，禁止上半摄影被转绘，禁止上半区出现文字或色卡，禁止外框、照片边框、阴影、悬浮卡片、Logo、签名、水印、英文或任何未指定文字。检查实际像素比例、上下分区、原摄影保真、单一主体提取、具体省略项、留白、准确文字和三枚正方形色卡。任何一项失败都应在生图阶段修复同一张完整作品，不得改用拼接或程序排字。最终仅展示并交付一张通过检查的完整成品。
+禁止下半区完整场景复刻，禁止保留{omit_list}，禁止上半摄影被转绘，禁止上半区出现文字或色卡，禁止外框、照片边框、阴影、悬浮卡片、Logo、签名、水印、英文或任何未指定文字。检查实际像素比例、上下分区、原摄影保真、单一主体提取、具体省略项、留白和三枚正方形色卡。不要求生成后识别错字、纠字或因文字重试。上述构图项失败都应在生图阶段修复同一张完整作品，不得改用拼接或程序排字。最终仅展示并交付一张通过检查的完整成品。
 ```
 
 ## Downstream prompt preflight
@@ -130,7 +130,7 @@ Attach the original photo and send the complete compiled prompt in one call. Do 
 
 Do not ask for four styles or multiple candidates. If the host automatically returns multiple images despite a one-image request, inspect them, select at most one compliant result, and present only that result. A correction is a retry of the same final work, not an additional candidate.
 
-If text, ratio, extraction, swatches, or photo fidelity fails, correct the same complete design through image generation while restating the full contract. If the host cannot preserve the upper photograph, state the limitation and recommend a stronger reference-image model rather than silently switching to a stitched workflow.
+If ratio, extraction, swatches, or photo fidelity fails, correct the same complete design through image generation while restating the full contract. If the host cannot preserve the upper photograph, state the limitation and recommend a stronger reference-image model rather than silently switching to a stitched workflow.
 
 ## Acceptance checklist
 
@@ -142,8 +142,7 @@ Apply this checklist to the resolved brief: disabled text or swatches must be ab
 - Lower region contains exactly one extracted subject and no recognizable full-scene background.
 - The concrete omit list is absent from the lower panel.
 - Subject remains contained and at least about 45% of the lower paper is visibly quiet.
-- Exact title and note appear only in the lower panel; confirmed place name appears verbatim when applicable.
-- Type treatment suits the actual scene; lettering has no malformed, missing, or substituted glyphs.
+- Title and note are placed only in the lower panel; spelling and confirmed-name preservation are specified before generation, not post-generation OCR checks.
 - Exactly three tiny equal solid-color square swatches appear only in the lower panel at the resolved position.
 - No extra text, logo, signature, watermark, border, shadow, grid, comparison, or candidate sheet.
 - Every visible component was generated together; the delivered artifact is one image only.

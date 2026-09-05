@@ -157,7 +157,7 @@ Preserve user-supplied wording exactly. This English guide also defaults to Chin
 
 For automatically composed Chinese copy, prefer common simplified characters, familiar words, and natural short phrases. When meanings are comparable, choose distinguishable glyph structures rather than rare or densely complex characters for ornamental literary effect. An ordinary poetic phrase using “潋滟” could be rewritten around “水面微光” (light on water); this demonstrates simplification, not a repeated caption for every photo. Do not impose a universal stroke-count cap or ban all complex characters.
 
-This applies only to ordinary copy composed by the Agent. Preserve confirmed place, landmark, and personal names and user-supplied wording exactly, even when their characters are complex. Do not delete characters, substitute homophones, abbreviate, or romanize them without permission. Simplify surrounding original copy, increase type size, or choose clearer lettering instead. Disclose persistent glyph errors rather than calling an inaccurate result compliant.
+This applies only to ordinary copy composed by the Agent. Preserve confirmed place, landmark, and personal names and user-supplied wording exactly, even when their characters are complex. Do not delete characters, substitute homophones, abbreviate, or romanize them without permission. Before generation, simplify surrounding original copy, plan suitable type size, and choose clear lettering.
 
 ## 11. Typography and copy placement
 
@@ -240,16 +240,14 @@ Check composition before fine detail:
 2. Panel boundary and split are clear; default 50/50, with a full-bleed borderless upper photo.
 3. The lower area contains only the selected subject and necessary attached cues; concrete omitted background objects did not return.
 4. Scale is balanced and clean paper remains around the subject; it is not a smaller complete landscape painting.
-5. Confirmed place names appear and unconfirmed locations were not invented.
-6. Text is exact, readable, scene-matched in typography, and entirely below; original ordinary copy avoids needless glyph complexity without altering names or user wording.
-7. Swatch count, shape, size, fill, and placement are correct, or absent when requested.
-8. There is no extra decoration, instructional copy, logo, signature, watermark, frame, or candidate grid.
+5. Resolve copy and typography before generation; this workflow requires no post-generation OCR, typo detection, correction, or typo-triggered retry.
+6. Swatch count, shape, size, fill, and placement are correct, or absent when requested.
+7. There is no extra decoration, instructional copy, logo, signature, watermark, frame, or candidate grid.
 
 Correct the cause: remove restored scenery for a full-scene repeat; reduce the subject and wash for crowding; add internal subject detail for sparseness; reposition copy when cramped; enforce uniform fill when swatches resemble fragments.
 
 Corrections must still regenerate or edit the complete work through image generation, never programmatic stitching, cropping of the finished art, or text overlays. If the tool persistently cannot satisfy the request, state the failed criterion rather than claiming compliance or generating indefinitely.
 
-For glyph errors, first inspect size, spacing, contrast, and overly decorative lettering, then use a clearer treatment still suited to the scene. If needed, simplify only automatically composed ordinary copy. Keep confirmed names and user text unchanged; do not quietly rewrite them to pass inspection. Send the exact revised wording and selected typography in the complete image-generation prompt.
 
 ## 16. Final delivery
 

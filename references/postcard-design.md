@@ -37,7 +37,7 @@ Record the evidence source and confidence in the content card. Visible text can 
 
 ## Copy and type decisions
 
-Automatically compose ordinary Chinese copy with common simplified characters and familiar, natural wording; avoid needless glyph complexity for literary effect. This is not a stroke-count limit. Never simplify or substitute confirmed names or user-provided wording without permission. If rendering fails, improve size, spacing, contrast, or type clarity first; simplify only original non-name copy when necessary and regenerate the complete image.
+Automatically compose ordinary Chinese copy with common simplified characters and familiar, natural wording; avoid needless glyph complexity for literary effect. This is not a stroke-count limit. Never simplify or substitute confirmed names or user-provided wording without permission. Resolve copy, size, spacing, contrast, and type clarity before generation. No post-generation typo detection, text correction, or typo-triggered retry is required.
 
 Choose one concrete type treatment from the actual subject, mood, medium, and copy density. Clear handwriting is available by default for relaxed everyday scenes; regular script, serifs, rounded lettering, and humanist sans are also options, not mandatory subject-to-font mappings. Do not force Song onto every photo or rotate fonts randomly. Specify clear strokes, readable weight and spacing in the image prompt; avoid tangled cursive and excessive type mixing. A user's requested font overrides automatic selection; do not claim exact font-file use without verification.
 
@@ -124,7 +124,6 @@ Use {paper} and {color treatment}. Keep the result quiet, airy, contemporary, an
 - **Panel feels too full:** remove environmental cues first, then reduce the subject and wash until at least about 45% clean paper remains.
 - **Layout feels repetitive:** move the subject, copy, and swatch group according to actual negative space; keep each group separate and vary valid arrangements across a gallery.
 - **Subject too large:** switch from expansive to compact scale and increase whitespace.
-- **Wrong text:** repeat the exact text and typography constraints in a targeted full-image correction; never add replacement text programmatically.
 - **Swatches become photo fragments:** specify solid fill, equal small squares, no texture or gradient, and correct the complete image in the generation stage.
 - **Model returns multiple options:** repeat “one complete final image only” and discard grids or candidate sheets.
 - **Wrong canvas ratio:** inspect pixel dimensions and correct the same complete design in the image-generation stage. Do not crop or resize the final artwork with code.

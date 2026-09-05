@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.2 - 2026-09-06
+
+- Removed post-generation typo detection, text-correction procedures, and typo-triggered retries from active Skill instructions, standalone guides, and the example prompt.
+- Kept typography selection and readable-wording decisions before generation, including exact confirmed names and user-supplied text in the image prompt.
+- No new image-generation test was performed.
+
 ## 1.2.1 - 2026-09-05
 
 - Replaced the Song-style default with active typography selection based on subject, mood, medium, and readability, including handwriting without a user opt-in.
