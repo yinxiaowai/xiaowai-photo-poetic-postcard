@@ -22,24 +22,40 @@ REQUIRED = (
     "NOTICE.md",
 )
 FORBIDDEN_IN_SKILL = (
-    "生成四张",
-    "四张候选",
-    "four candidates",
     "only uses codex",
     "本 skill 只使用 codex",
+    "about 48%",
+    "about 52%",
+    "约 48%",
+    "约 52%",
 )
 REQUIRED_IN_SKILL = (
     "one image-generation operation",
+    "downstream prompt compiler",
+    "mandatory downstream prompt contract",
+    "downstream prompt preflight",
+    "不得概括",
+    "【画面结构】",
+    "【上半区｜原摄影锁定】",
+    "【下半区｜单一主体转绘】",
+    "【文字与三枚色卡】",
+    "【禁止项与交付】",
+    "上下两个独立区域",
+    "上下等高、各占50%",
+    "只提取并转绘",
+    "1/20",
+    "100%均匀纯色平涂",
     "do not generate the lower panel separately",
     "do not use a local compositor",
     "do not overlay title",
-    "filling the upper region edge to edge",
-    "no paper margin and no hairline",
+    "fills the upper region edge to edge",
+    "no paper gap, hairline",
     "at least about 45%",
     "deconstruct → selective preservation → distill → reconstruct",
     "do not default every result to lower-right",
-    "2:3 output is not acceptable",
-    "confirmed place or landmark in favor of generic poetic copy",
+    "a 2:3 result fails",
+    "exact place or landmark name must appear verbatim",
+    "if the host automatically returns multiple images",
 )
 REMOVED_IMPLEMENTATION_PATHS = (
     "scripts/compose_postcard.py",
@@ -159,10 +175,34 @@ def main() -> int:
             if clean and not (path.parent / clean).resolve().exists():
                 fail(f"broken local HTML link in {relative}: {target}", failures)
 
-    for relative in (
-        "references/photo-poetic-postcard-prompt.zh-CN.md",
-        "references/photo-poetic-postcard-prompt.en.md",
-    ):
+    prompt_contracts = {
+        "references/photo-poetic-postcard-prompt.zh-CN.md": (
+            "不得概括",
+            "【画面结构】",
+            "【上半区｜原摄影锁定】",
+            "【下半区｜单一主体转绘】",
+            "【文字与三枚色卡】",
+            "【禁止项与交付】",
+            "上下两个等高、独立的区域",
+            "只提取并转绘",
+            "具体删除清单",
+            "1/20",
+            "100% 均匀纯色平涂",
+        ),
+        "references/photo-poetic-postcard-prompt.en.md": (
+            "without summarizing",
+            "[canvas structure]",
+            "[upper panel — source photo lock]",
+            "[lower panel — one extracted subject]",
+            "[typography and swatches]",
+            "[prohibitions and delivery]",
+            "50% each",
+            "concrete omission list",
+            "1/20",
+            "100% uniform and flat",
+        ),
+    }
+    for relative, required_phrases in prompt_contracts.items():
         path = ROOT / relative
         if path.is_file():
             text = path.read_text(encoding="utf-8").lower()
@@ -171,6 +211,12 @@ def main() -> int:
                     break
             else:
                 fail(f"standalone prompt does not enforce one output: {relative}", failures)
+            for phrase in required_phrases:
+                if phrase.lower() not in text:
+                    fail(f"standalone prompt contract missing in {relative}: {phrase}", failures)
+            for phrase in ("about 48%", "about 52%", "约 48%", "约 52%"):
+                if phrase in text:
+                    fail(f"obsolete flexible default remains in {relative}: {phrase}", failures)
 
     if failures:
         print("Validation failed:")

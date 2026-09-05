@@ -139,6 +139,21 @@ If your Agent cannot install Skills, upload the photo and paste one complete fil
 
 This is the recommended route for Dreamina, Doubao, and other image-capable Agents without a documented GitHub Skill installer.
 
+See the [resolved Xiaoqikong example](references/example-xiaoqikong-compiled-prompt.zh-CN.md) to understand what a fully compiled image-model prompt looks like. Its place, subject, colors, and copy are example-specific and must not be reused for other photos.
+
+> **Paste the complete file and do not let an intermediary Agent summarize it.** Before calling an image model, the instructions require a concrete extracted subject, a photo-specific omission list, exact copy, three colors, and resolved layout positions. A one-paragraph prompt that merely says “keep the photo above and repaint the same scene below” indicates a failed handoff; stop and use the complete file again.
+
+## Why this version is more robust across Agents
+
+The standalone prompt is an end-to-end execution contract rather than a set of style keywords:
+
+1. The default 3:4 canvas is strictly divided into two independent 50% regions.
+2. The main Skill embeds the complete Chinese downstream template, so success does not depend on the host following a reference link.
+3. The Agent must resolve one concrete subject and a photo-specific omission list; “the whole landscape” or “the same scene” is invalid.
+4. The final image-model prompt must preserve all five sections and may not be summarized into one paragraph.
+5. The three swatches have a testable size rule: each is a perfect solid square about `1/20` of lower-panel width.
+6. Generation is blocked until the prompt includes every required section, subject, omission, exact copy, three colors, and delivery constraint.
+
 ## Capability fallback
 
 | Host capability | Behavior |
@@ -152,13 +167,13 @@ This is the recommended route for Dreamina, Doubao, and other image-capable Agen
 | Control | Default | Examples |
 | --- | --- | --- |
 | Canvas | 3:4, 1080 × 1440 | 4:5, 1:1, 9:16, custom pixels |
-| Photo share | About 48% | About 40–65%; default photo is flush to the top and side edges |
+| Panel split | Strict 50/50 | Explicitly adjustable to about 40–65%; the Agent must not drift automatically; photo remains flush to top and side edges |
 | Medium | transparent watercolor, light gouache, colored pencil | ink wash, printmaking, paper collage, restrained digital paint |
 | Subject scale | moderately compact and complexity-aware | horizontal/detailed subjects about 55–70% lower width; people, animals, and rings about 40–55% |
 | Subject position | negative-space driven | left, center, or right, while keeping at least about 45% visibly clean paper |
 | Paper | warm ivory fiber | cool gray-white, handmade fiber, smooth museum stock |
 | Text | Chinese title + short note | custom language/typeface or no text |
-| Swatches | three, grouped in a clear lower-panel corner | reposition or hide; if shown, keep three solid squares |
+| Swatches | three, grouped in a clear lower-panel corner | reposition or hide; if shown, keep three perfect solid squares, each about 1/20 of lower-panel width |
 | Color | sampled, muted | warmer, cooler, monochrome accent while source-traceable |
 | Layout | resolved after placing the subject | move text and swatches among lower-panel corners; avoid repeating one fixed arrangement |
 

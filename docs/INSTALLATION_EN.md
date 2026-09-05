@@ -56,6 +56,8 @@ This project does not claim an unverified GitHub Skill installer for these produ
 1. Open an image-capable Agent or creation workspace.
 2. Upload one source photo.
 3. Paste the code block from the [Chinese](../references/photo-poetic-postcard-prompt.zh-CN.md) or [English](../references/photo-poetic-postcard-prompt.en.md) prompt.
+
+Paste the complete file or complete code block. Do not copy only the style paragraph, and do not accept a one-paragraph summary written by an intermediary Agent. The actual image-model prompt must preserve the full section structure and name the photo-specific subject, concrete omission list, title, note, three colors, text position, and swatch position.
 4. Set any desired dimensions, split, medium, or copy.
 5. Keep one final image; reject multi-image grids.
 

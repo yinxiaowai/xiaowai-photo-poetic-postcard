@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.1.0 - 2026-09-05
+
+- Added a mandatory downstream prompt compiler directly to `SKILL.md` so intermediary Agents cannot replace the full contract with a one-paragraph summary.
+- Added five fixed prompt sections, concrete subject and omission-list resolution, placeholder checks, and a pre-generation gate.
+- Changed the default panel split to a strict 50/50 for higher reliability across weaker image Agents.
+- Defined each of the three swatches as a perfect flat-color square with a side length near 1/20 of lower-panel width.
+- Hardened the standalone Chinese and English Prompt MD files against prompt summarization, whole-scene repainting, and automatic multi-style requests.
+- Added cross-Agent troubleshooting notes to both READMEs and installation guides.
+
 ## 1.0.1 - 2026-09-04
 
 - Replaced the flower-arch gallery case with a new Golden Hall source and verified 3:4 one-shot result.

@@ -1,123 +1,124 @@
 ---
 name: xiaowai-photo-poetic-postcard
-description: Turn one user photo into one finished poetic postcard in a single image-generation operation, with a faithful photographic upper panel and a watercolor reinterpretation of one extracted subject below. Use for literary travel postcards, photo-and-illustration split compositions, or customizable variations of this visual system.
+description: Turn one user photo into one finished poetic postcard in a single image-generation operation, with a faithful photographic upper panel and a watercolor reinterpretation of exactly one extracted subject below. Use for literary travel postcards, photo-and-illustration split compositions, or customizable variations of this visual system.
 ---
 
 # Photo Poetic Postcard
 
-Create one complete postcard from one source photo. The entire composition must be produced in one image-generation operation: upper photograph, lower reinterpretation, paper, title, note, swatches, and layout. Do not assemble separate panels or add text programmatically afterward.
+Create one complete postcard from one source photo. Produce the upper photograph, lower reinterpretation, paper, title, note, three swatches, and layout together in one image-generation operation. Never generate separate pieces, stitch panels, or add typography or swatches with code afterward.
 
-## Start with capability detection
+## Critical execution rule
 
-Determine which path the current host supports:
+This Skill is not only an art-direction reference. It is a **downstream prompt compiler**.
 
-1. **Full-image generation path:** the host can inspect the source and generate or edit an image from a reference. Generate the complete postcard once as one integrated image. If it fails quality review, repair the same design and return only the final corrected image.
-2. **Prompt handoff path:** the host can inspect the photo but has no image-generation capability. Analyze the photo and return one complete, model-ready prompt containing the image-specific subject, colors, title, note, and requested parameters. Do not claim that an image was generated.
-3. **No-vision path:** the host cannot inspect the photo. Explain that image understanding is required. Direct the user to [the standalone Chinese prompt](references/photo-poetic-postcard-prompt.zh-CN.md) or [English prompt](references/photo-poetic-postcard-prompt.en.md) in an image-capable Agent. Never invent the photo's subject, colors, place, or composition.
+Before every image-generation call, analyze the source, resolve the content card, compile the complete Chinese prompt defined below, and send that full prompt to the image model **verbatim** with the source image attached. 不得概括、缩写、转述或压缩成一段普通风格描述。A one-paragraph prompt that merely says “keep the photo above and repaint the same scene below” is invalid because it loses the panel lock, subject extraction, omit list, whitespace, typography, and swatch constraints.
 
-Do not require a specific vendor or model. Use the best reference-image generation or editing capability actually available in the current host.
+If the host exposes a separate image-tool prompt field, put the complete compiled prompt in that field. Do not replace it with a short summary. If the host can only hand work to another Agent, return the complete compiled prompt unchanged so the user can paste it directly.
 
-## Resolve the brief
+## Detect host capability
 
-Read [the visual system](references/postcard-design.md) before generating.
+Choose the truthful path:
 
-Honor explicit user choices. For anything not specified, use these defaults:
+1. **Vision + image generation:** inspect the source, compile the full prompt, attach the source, and generate the integrated postcard.
+2. **Vision without image generation:** inspect the source and return a compact analysis, resolved parameter card, and the complete compiled prompt. State that no image was generated.
+3. **No vision:** state that image understanding is required. Direct the user to the [standalone Chinese prompt](references/photo-poetic-postcard-prompt.zh-CN.md) or [English prompt](references/photo-poetic-postcard-prompt.en.md) in an image-capable Agent. Never invent the subject, colors, place, or composition.
 
-- output: one 3:4 portrait image;
-- split: upper photo about 48%, lower design about 52%;
-- paper: warm, low-saturation ivory fiber paper;
-- reinterpretation: transparent watercolor, light gouache, and a trace of colored pencil;
-- text: one concise Chinese title and one natural Chinese note;
-- palette: exactly three small square swatches sampled from the photo;
-- layout: place subject, text, and swatches after inspecting the lower panel's negative space; do not lock them to one repeated arrangement.
+Do not require a specific vendor or model. Use the strongest reference-image generation or editing capability actually available.
 
-The user may adjust the aspect ratio or dimensions, photo/illustration ratio, rendering medium, subject scale and position, paper treatment, title, note, language, typography, swatches, color treatment, and lower-panel arrangement. If an adjustment conflicts with a core invariant, preserve the invariant and explain the smallest necessary compromise.
+## Resolve one content card
 
-## Analyze once
+Read [the visual system](references/postcard-design.md), inspect the photo, and resolve every field before generation:
 
-Create one internal content card before generation:
+- `main_subject`: exactly one visual center to reinterpret, never “the whole scene”;
+- `identity_cues`: zero to three features belonging to, touching, or directly interacting with that subject;
+- `omit_list`: concrete visible nouns that must disappear from the lower panel;
+- `photo_subject` and `key_relations`: facts the upper photo must preserve;
+- `complexity`, `medium`, `subject_scale`, and `subject_position`;
+- exact `title` and `note` text;
+- `place_name`, evidence source, and confidence;
+- exactly three representative source-photo colors in fixed order;
+- exact lower-panel positions for the subject, text group, and swatch group;
+- output ratio or dimensions and panel split.
 
-- one main element to reinterpret;
-- zero to three minimum identity cues that belong to or directly touch that subject;
-- an explicit omission list for the rest of the scene;
-- complexity: detailed or simple;
-- title and short note;
-- place evidence, evidence source, and confidence;
-- three distinct representative colors in fixed order;
-- output ratio, panel split, style, scale, and layout;
-- whether the place identity is certain enough to name.
+Resolve place identity in this order: a name explicitly supplied by the user; legible signage, EXIF, or geotag; then a uniquely identifiable landmark only at high confidence. If confirmed, the exact place or landmark name must appear verbatim in the title or note. If evidence is insufficient, use scene-based copy and never guess.
 
-Resolve place identity in this order: an explicit place name supplied by the user; a legible sign, EXIF, or geotag in the source; then a uniquely identifiable landmark only when confidence is high. Treat a user-supplied place name as authoritative for the current task. If a place or landmark is confirmed, its exact name must appear verbatim at least once in the title or note; do not replace it with generic poetic copy. If evidence is insufficient, write a natural scene-based title and never guess a landmark.
+Default to one exact 3:4 portrait image, strict 50/50 upper/lower regions, warm low-saturation ivory fiber paper, transparent watercolor plus light gouache and a trace of colored pencil, one concise Chinese title, one natural Chinese note, and exactly three swatches. Honor explicit user changes to dimensions, split, medium, paper, scale, position, language, typography, copy, palette, swatches, or layout while preserving the core invariants.
 
-## Generate the complete image once
+## Mandatory downstream prompt contract
 
-Send the source photo as the reference image and request one complete, integrated postcard. The generation prompt must define all parts together:
+Fill every brace with image-specific content. Remove braces before sending. Keep the five section headings and all applicable constraints. For Chinese-capable image Agents such as Dreamina or Doubao, use this Chinese prompt directly. For an English-only image model, translate the filled content without deleting or merging sections.
 
-1. one 3:4 portrait paper canvas;
-2. the source photograph filling the upper region edge to edge, flush with the top and both side edges, with no paper margin and no hairline;
-3. one extracted main element reinterpreted in the lower region;
-4. one optional soft, irregular translucent wash;
-5. exact title and note text in the clearest lower-panel corner or side space;
-6. exactly three sampled solid-color square swatches grouped in a different clear lower-panel corner when possible;
-7. no additional text, object, logo, signature, watermark, candidate, or separate panel.
+```text
+【画面结构】
+根据上传的唯一一张原图，生成一张完整的{画布比例或像素尺寸；默认精确3:4竖版}诗意明信片。整张画布严格水平分成上下两个独立区域，默认上下等高、各占50%；只有用户明确指定其他比例时才允许改变。绝对不允许整张图全部转绘：上半区必须保留原摄影，下半区才做艺术转绘。上方照片、下方转绘、纸张、标题、短注、三枚色卡和全部排版必须在同一次生图中一次性生成；禁止先生成局部后拼接，禁止事后用程序排字或贴色卡。所有文字和色卡100%限制在下半区，不能进入上半区。最终只交付一张完整成品，禁止主动生成四种风格、四张候选、四宫格、对比图或单独的下半图。
 
-Do not generate the lower panel separately. Do not use a local compositor. Do not overlay title, note, swatches, borders, or layout with code after generation. “One input → one output” means one complete integrated design, not a stitched artifact.
+【上半区｜原摄影锁定】
+上半区使用上传的原摄影，原图主体为{photo_subject}，关键空间与视觉关系为{key_relations}。以cover方式铺满整个上半区，贴齐整张画布顶部、左边和右边，不留纸边、白边、描边、轮廓线、边框、相框或阴影。只允许为铺满上半区进行必要的等比裁切；不得拉伸，不得生成式扩图，并应保住主要主体。完整保留原图的主体、光影、色彩、空间关系和摄影质感，不得重画、替换、美化、修饰、增删或改写任何摄影内容。上半区除原摄影外绝对不能出现文字、色卡或其他元素。
 
-Use `DECONSTRUCT → SELECTIVE PRESERVATION → DISTILL → RECONSTRUCT` for the lower illustration. Keep the selected subject and only its minimum attached identity cues. Remove recognizable background scenery, distant architecture, broad landscape, sky, forest, cliffs, streets, crowds, and decorative clutter. A faint irregular color wash may echo the source palette, but it must not reconstruct a second scene.
+【下半区｜单一主体转绘】
+只提取并转绘{main_subject}，不是把整幅原图、同一场景或完整背景再画一遍。仅保留这些最低必要辨识线索：{identity_cues；没有则写“无额外线索”}。明确省略并禁止出现：{omit_list，必须写成与本图对应的具体可见对象}。采用“拆解 → 选择性保留 → 蒸馏 → 重构”，以{medium}表现主体的轮廓、结构、材质和关键配色。主体约占下半区宽度{subject_scale；默认55%—65%}，放在{subject_position}；保持完整自然轮廓，边缘自然消融进纸面，不触碰下半区左右边缘或下边缘。下半区至少保留约45%连续、明显、干净的纸面，密度介于“孤立小图标”和“完整场景水彩”之间。主体后方最多一个紧贴主体的局部、柔和、不规则、半透明色彩晕染；不得形成可识别背景、第二场景、矩形图块或第二主体。
 
-Compose adaptively rather than by template:
+【文字与三枚色卡】
+标题严格写作“{title}”，短注严格写作“{note}”，采用{typography和language}，逐字准确，只出现一次。若地点或景点已确认，准确名称“{place_name}”必须在标题或短注中原样出现；未确认时不得编造。文字组仅放在下半区的{text_position}。另在下半区的{swatch_position}放置三枚从原图提取的色卡，颜色依次为{color_1}、{color_2}、{color_3}。三枚色卡必须等大、极小、完美正方形、紧凑横排；每枚边长约为下半区总宽度的1/20；内部100%均匀纯色平涂。禁止纹理、图案、渐变、圆形、异形、照片切片或第四枚色卡。文字组和色卡组根据真实负空间安排，可位于下半区左上、右上、左下或右下，尽量分处不同空位，不得遮挡主体，也不得固定所有作品都使用同一角落。
 
-- anchor the illustration left, center, or right according to its silhouette and the available negative space;
-- place the title/note group in whichever lower-panel corner or side space balances the subject;
-- place the three-swatches group in another clear corner; do not default every result to lower-right;
-- for a multi-example gallery, deliberately vary valid arrangements across cases;
-- keep at least about 45% of the lower panel as visibly quiet paper. Horizontal or detailed subjects may use about 55–70% of lower-panel width; people, animals, rings, and compact objects normally use about 40–55%.
+【禁止项与交付】
+禁止下半区完整场景复刻，禁止保留{omit_list}，禁止上半摄影被转绘，禁止上半区出现文字或色卡，禁止外框、照片边框、阴影、悬浮卡片、Logo、签名、水印、英文或任何未指定文字。检查实际像素比例、上下分区、原摄影保真、单一主体提取、具体省略项、留白、准确文字和三枚正方形色卡。任何一项失败都应在生图阶段修复同一张完整作品，不得改用拼接或程序排字。最终仅展示并交付一张通过检查的完整成品。
+```
 
-If the first generation fails, use a targeted correction while restating all invariants. A correction is a retry of the same final work, not a second candidate. Show only one accepted result to the user.
+## Downstream prompt preflight
 
-## Prompt handoff path
+Do not invoke the image tool until the compiled prompt passes every item:
 
-Return:
+- contains all five exact section headings;
+- contains `上下两个独立区域` and the resolved split, defaulting to `上下等高、各占50%`;
+- identifies one concrete `main_subject`; “same scene,” “whole landscape,” or an unresolved placeholder is not valid;
+- contains `只提取并转绘` followed by that concrete subject;
+- contains a concrete `omit_list` naming visible background elements from this photo;
+- contains the exact resolved title, note, text position, swatch position, and three distinct colors;
+- contains `三枚`, `完美正方形`, `1/20`, and `100%均匀纯色平涂`;
+- contains the one-shot ban on stitching and programmatic typography;
+- contains `最终只交付一张` and does not request styles or candidates;
+- contains no unresolved `{placeholder}`.
 
-1. a compact photo analysis;
-2. the resolved parameter card;
-3. one complete copyable full-image prompt;
-4. a short note naming the missing capability and where the prompt can be used.
+If anything is missing, repair the prompt before generation. Never rely on the image model to infer an omitted rule from the Skill name or a previous message.
 
-Do not output several prompt variants unless the user explicitly asks for alternatives.
+## Subject extraction rules
 
-## Core invariants
+Use `DECONSTRUCT → SELECTIVE PRESERVATION → DISTILL → RECONSTRUCT`:
 
-- Use the uploaded photo as the sole factual and visual source.
-- Generate every visible component together in the image-generation stage.
-- The upper panel uses a cover-style crop: fill its full width and height, touch the canvas top, left, and right edges, and leave no paper gap, border, outline, or frame. Never shrink the photograph into a floating card.
-- Crop only as needed to fill the upper region. Do not stretch or generatively extend the photo; keep the main subject and essential visual relationships intact.
-- The upper panel must look like the original photograph and preserve its subject, lighting, color relationships, spatial relationships, and photographic character. Do not replace, expand, repaint, beautify, or add content.
-- The lower panel reinterprets exactly one main element, not the entire scene.
-- Keep only minimum cues physically attached to or immediately interacting with the subject. Do not preserve a recognizable environmental background merely for atmosphere.
-- Keep the lower illustration contained rather than filling the whole lower region. Preserve at least one broad continuous area of untouched paper for typography and visual breathing room.
-- Keep a complete natural silhouette; never place the illustration inside a rectangular photo tile, frame, shadow, or floating card.
-- Use at most one soft, irregular, translucent wash behind the subject.
-- If swatches are enabled, use exactly three equal, small, solid-color squares sampled from the source photo.
-- Add no fabricated location, extra object, English copy, number, logo, signature, or watermark unless the user explicitly requests it.
-- Never omit a confirmed place or landmark in favor of generic poetic copy; include its exact name in the title or note.
-- Deliver one complete final image.
+- **Architecture or bridge:** keep the structure and at most three identifying cues. A bridge may keep a minimal water echo directly inside or beneath its openings; omit the broad river, forest, mountain, sky, distant buildings, roads, crowds, and unrelated trees.
+- **Person:** keep identity-defining facial structure, hair, clothing, and key pose; omit the recognizable location and broad landscape.
+- **Animal with an interacting object:** keep the animal and only the object it directly touches when that relationship is essential; omit the surrounding floor, yard, buildings, and clutter.
+- **Plant, ring, or installation:** keep its silhouette, material, and signature colors; omit lawn, sky, lamps, paths, and background structures.
+- **Vehicle or boat:** keep the vehicle and only a tight grounding shadow or reflection; omit the town, skyline, mountain, broad water, and waterfront.
+
+The lower result must read as one illustrated subject on paper, not a second rectangular picture, filtered thumbnail, or watercolor copy of the full photograph.
+
+## Composition rules
+
+- The source photo fills the upper region edge to edge and touches the top and both side edges. No paper gap, hairline, border, outline, frame, or generative extension.
+- The lower subject may shift left, center, or right according to its silhouette. Detailed horizontal subjects normally use about 55%–70% of lower width; people, animals, rings, and compact objects normally use about 40%–55%.
+- Keep at least about 45% of the lower panel visibly quiet. Remove environmental cues before enlarging the design.
+- Place the exact title/note and the three-swatches group only after reading actual negative space. Do not default every result to lower-right.
+- If swatches are enabled, use exactly three equal solid-color squares, each about 1/20 of the lower-panel width.
+
+## Generation and correction
+
+Attach the original photo and send the complete compiled prompt in one call. Do not generate the lower panel separately. Do not use a local compositor. Do not overlay title, note, swatches, borders, or layout with code after generation.
+
+Do not ask for four styles or multiple candidates. If the host automatically returns multiple images despite a one-image request, inspect them, select at most one compliant result, and present only that result. A correction is a retry of the same final work, not an additional candidate.
+
+If text, ratio, extraction, swatches, or photo fidelity fails, correct the same complete design through image generation while restating the full contract. If the host cannot preserve the upper photograph, state the limitation and recommend a stronger reference-image model rather than silently switching to a stitched workflow.
 
 ## Acceptance checklist
 
-- The result is one organically designed image, not two separately generated images stitched together.
-- Typography, swatches, borders, and layout were generated as part of the same image operation.
-- The upper photo remains visually faithful, fills its region edge to edge, and has not been replaced with an illustration.
-- No white or paper margins, hairlines, borders, or frame surround the upper photograph.
-- The two regions feel intentionally balanced at the chosen ratio.
-- The lower region contains one extracted subject rather than a second full-scene painting.
-- Subject scale matches its complexity, stays visually contained, does not touch the edges, and leaves intentional negative space for copy and swatches.
-- Title and note are accurate and spelled exactly as resolved.
-- If the place or landmark was confirmed, its exact name appears at least once in the title or note; if it was not confirmed, no place name was invented.
-- Swatch count, shape, color, and position match the brief.
-- No unintended frame, shadow, extra text, logo, watermark, or duplicate composition appears.
-- The delivered artifact is one image only.
-- The actual pixel dimensions match the requested aspect ratio. For the default, width divided by height must equal 0.75 (3:4); a 2:3 output is not acceptable.
-- Text and swatches occupy composition-aware negative space rather than repeating the same lower-left/lower-right template in every result.
-
-If text is wrong, correct the same complete image through another image-generation edit. Never replace the failed text with a programmatic overlay. If the model cannot keep the upper photo sufficiently faithful, state that limitation and recommend a stronger reference-image model rather than silently switching to a stitched workflow.
+- One exact requested-ratio image; for the default, width divided by height equals 0.75. A 2:3 result fails.
+- Strict upper/lower regions at the resolved split; default is 50/50.
+- Upper region is the faithful original photograph, full-bleed at top and sides.
+- Lower region contains exactly one extracted subject and no recognizable full-scene background.
+- The concrete omit list is absent from the lower panel.
+- Subject remains contained and at least about 45% of the lower paper is visibly quiet.
+- Exact title and note appear only in the lower panel; confirmed place name appears verbatim when applicable.
+- Exactly three tiny equal solid-color square swatches appear only in the lower panel at the resolved position.
+- No extra text, logo, signature, watermark, border, shadow, grid, comparison, or candidate sheet.
+- Every visible component was generated together; the delivered artifact is one image only.
