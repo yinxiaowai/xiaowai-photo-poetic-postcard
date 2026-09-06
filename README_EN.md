@@ -34,13 +34,13 @@ Personal column: https://waytoagi.feishu.cn/wiki/Pddywh6NqiRKb4kaJBscAbf9nUA
 ![Model Adaptive](https://img.shields.io/badge/Model-Adaptive-A16207?style=flat-square)
 ![Content License](https://img.shields.io/badge/Content-CC%20BY--NC--SA%204.0-2F2A25?style=flat-square)
 
-Turn one user photo into one finished poetic postcard: preserve the original photograph above, reinterpret only one extracted subject below, then add restrained typography and three sampled color swatches.
+Turn one user photo into one finished poetic postcard: preserve the original photograph above and reinterpret only one extracted subject below, with restrained typography in the same generated work.
 
 The workflow is not tied to a single image model and never requires four candidates. It can be installed as a Skill, pasted as a standalone prompt, or degraded honestly when the host lacks image tools.
 
 ## Gallery
 
-These are verified outputs made from authorized source photos in one complete image-generation operation. No lower panel was generated separately, and no typography was added later with code. All six results measure `1086 × 1448`, exactly 3:4. Use the source links below to inspect how each main subject was extracted; see [examples/README.md](examples/README.md) for the case record.
+These six authorized source/photo-postcard pairs demonstrate subject extraction, outward watercolor washes, scene-matched typography, and independent lower-panel layouts. Use the source links below to compare content choices; see [examples/README.md](examples/README.md) for the case record.
 
 <!-- GALLERY:START -->
 <table>
@@ -67,8 +67,8 @@ These are verified outputs made from authorized source photos in one complete im
 - Honest fallback: a vision-only Agent returns one fully resolved prompt; a no-vision Agent does not invent the image.
 - Standalone Chinese and English Prompt MD files work when Skills cannot be installed.
 - Place evidence is resolved before copywriting; a confirmed place must appear verbatim in the title or note, while uncertain locations are never guessed.
-- Users may customize dimensions, split ratio, medium, layout, typography, paper, swatches, and color treatment.
-- The upper photograph, lower reinterpretation, paper, typography, swatches, and layout are generated together in one image operation; no later stitching or programmatic typesetting is allowed.
+- Users may customize dimensions, split ratio, medium, layout, typography, paper, and color treatment.
+- The upper photograph, lower reinterpretation, paper, typography, and layout are generated together in one image operation; no later stitching or programmatic typesetting is allowed.
 
 ## Compatibility
 
@@ -139,9 +139,9 @@ No project installation is needed. Upload one photo and attach either MD file to
 
 This is the recommended route for Dreamina, Doubao, and other image-capable Agents without a documented GitHub Skill installer.
 
-Each file is a self-contained **16-section drawing guide** covering image roles, subject selection and omission, subject-specific decisions, panels, crop conflicts, media, scale and whitespace, paper and washes, place evidence and copy, typography, swatches, customization, host capabilities, correction, and delivery. No template fields or other repository files are needed.
+Each file is a self-contained **15-section drawing guide** covering image roles, subject selection and omission, subject-specific decisions, panels, crop conflicts, media, scale and whitespace, paper and washes, place evidence and copy, typography, customization, host capabilities, correction, and delivery. No template fields or other repository files are needed.
 
-Ask the Agent to process your photo using the attached guide. It decides unspecified layout, copy, colors, and brushwork from the image. Add adjustments in ordinary language, such as “make the lower area airier, use light ink, and omit swatches.”
+Ask the Agent to process your photo using the attached guide. It decides unspecified layout, copy, colors, and brushwork from the image. Add adjustments in ordinary language, such as “make the lower area airier, use light ink.”
 
 The [Xiaoqikong example](references/example-xiaoqikong-compiled-prompt.zh-CN.md) is optional reading to illustrate one application. It is not required for Method 2, and its place, copy, and colors are specific to that photo.
 
@@ -153,8 +153,7 @@ The guide explains decisions; the main Skill's five-section template conveys res
 2. The main Skill embeds the Chinese handoff template and requires reading the complete drawing guide; Method 2 needs no other files.
 3. The Agent must resolve one concrete subject and a photo-specific omission list; “the whole landscape” or “the same scene” is invalid.
 4. Image-tool calls preserve sections and all active requirements while resolving observations into specific decisions; no lossy summary.
-5. The three swatches have a testable size rule: each is a perfect solid square about `1/20` of lower-panel width.
-6. Pre-generation checks follow active requirements; explicit no-text, no-swatch, and language choices update the defaults and checks together.
+5. Pre-generation checks follow active requirements; explicit no-text and language choices update the defaults and checks together.
 
 These are execution rules and design goals, not evidence of successful testing in every Agent or image model. Repository validation checks documents and packages; visual behavior still needs testing in the target environment.
 
@@ -178,9 +177,8 @@ These are execution rules and design goals, not evidence of successful testing i
 | Paper | warm ivory fiber | cool gray-white, handmade fiber, smooth museum stock |
 | Text | Chinese title + short note | custom language/typeface or no text |
 | Typography | Agent-selected from image content, mood, and medium; no default Song font | handwriting, regular script, rounded, serif, or sans; readability first; user-overridable |
-| Swatches | three, grouped in a clear lower-panel corner | reposition or hide; if shown, keep three perfect solid squares, each about 1/20 of lower-panel width |
 | Color | sampled, muted | warmer, cooler, monochrome accent while source-traceable |
-| Layout | resolved after placing the subject | move text and swatches among lower-panel corners; avoid repeating one fixed arrangement |
+| Layout | resolved after placing the subject | move text among lower-panel corners; avoid repeating one fixed arrangement |
 
 Original copy favors common characters and natural short phrases without altering confirmed names or user wording. Typography selection is active by default: users need not request a font change, and the Agent should not use rigid subject-to-font mappings or random rotation.
 

@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.3.0 - 2026-09-06
+
+- Removed swatch-generation instructions and parameters from the active Skill, standalone guides, examples, and installation documentation, without adding replacement negative prompts.
+- Clarified existing composition guidance: lower-panel subject scale and position are chosen independently from source-photo coordinates, together with the text and negative space.
+- Refined the existing wash guidance to spread softly beyond the subject's upper and side contours, not only below its base, without recreating the background.
+- Set flexible, readable title/note size starting ranges while retaining scene-matched typography, full-bleed upper photography, single-subject extraction, and confirmed-place copy rules.
+- Updated all six gallery results and synchronized the Chinese/English standalone guides and both installation packages.
+- Repository and package validation do not establish cross-Agent image-generation reliability.
+
 ## 1.2.2 - 2026-09-06
 
 - Removed post-generation typo detection, text-correction procedures, and typo-triggered retries from active Skill instructions, standalone guides, and the example prompt.

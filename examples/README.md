@@ -1,8 +1,8 @@
-# Verified example gallery
+# Postcard example gallery
 
-These examples use source photos supplied and authorized for this project. Every result was created as one complete image-generation operation; the photo, lower reinterpretation, paper, typography, swatches, and layout were generated together. No lower-panel stitching or programmatic text overlay was used.
+These examples use source photos supplied and authorized for this project. The six reviewed designs demonstrate one extracted subject, an outward watercolor wash, scene-matched typography, and lower-panel placement chosen independently from the source photo.
 
-The image tool was the image-generation capability available in the current Codex session. Its underlying model identifier was not exposed, so this repository does not invent or claim a model name. Every listed result was checked at `1086 × 1448` pixels, exactly 3:4.
+The image tool was the image-generation capability available in the current Codex session. Its underlying model identifier was not exposed, so this repository does not invent or claim a model name. These examples illustrate the visual direction; they do not establish consistent execution by every Agent or image model.
 
 | Case | Source | Result | Extracted subject | Place evidence | Copy decision |
 | --- | --- | --- | --- | --- | --- |

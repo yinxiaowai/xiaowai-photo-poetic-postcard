@@ -38,13 +38,11 @@ REQUIRED_IN_SKILL = (
     "【画面结构】",
     "【上半区｜原摄影锁定】",
     "【下半区｜单一主体转绘】",
-    "【文字与三枚色卡】",
+    "【文字与排版】",
     "【禁止项与交付】",
     "上下两个独立区域",
     "上下等高、各占50%",
     "只提取并转绘",
-    "1/20",
-    "100%均匀纯色平涂",
     "do not generate the lower panel separately",
     "do not use a local compositor",
     "do not overlay title",
@@ -161,11 +159,16 @@ def main() -> int:
 
     link_pattern = re.compile(r"!?\[[^\]]+\]\((?!https?://|mailto:|#)([^)]+)\)")
     html_link_pattern = re.compile(r"(?:src|href)=\"(?!https?://|mailto:|#)([^\"]+)\"")
-    for relative in ("README.md", "README_EN.md", "SKILL.md"):
-        path = ROOT / relative
+    active_documents = [ROOT / name for name in ("README.md", "README_EN.md", "SKILL.md", "examples/README.md")]
+    for folder in ("references", "docs"):
+        active_documents.extend(sorted((ROOT / folder).rglob("*.md")))
+    for path in active_documents:
+        relative = path.relative_to(ROOT).as_posix()
         if not path.is_file():
             continue
         text = path.read_text(encoding="utf-8")
+        if re.search(r"swatch|色卡|色块", text, re.IGNORECASE):
+            fail(f"removed palette-annotation content remains in active document: {relative}", failures)
         for target in link_pattern.findall(text):
             clean = target.split("#", 1)[0]
             if clean and not (path.parent / clean).resolve().exists():
@@ -181,29 +184,25 @@ def main() -> int:
             "【画面结构】",
             "【上半区｜原摄影锁定】",
             "【下半区｜单一主体转绘】",
-            "【文字与三枚色卡】",
+            "【文字与排版】",
             "【禁止项与交付】",
             "上下两个等高、独立的区域",
             "只提取并转绘",
             "具体删除清单",
             "无纸边、白边、描边",
             "纸张肌理和文艺留白只属于下半区",
-            "1/20",
-            "100% 均匀纯色平涂",
         ),
         "references/photo-poetic-postcard-prompt.en.md": (
             "without summarizing",
             "[canvas structure]",
             "[upper panel — source photo lock]",
             "[lower panel — one extracted subject]",
-            "[typography and swatches]",
+            "[typography and layout]",
             "[prohibitions and delivery]",
             "50% each",
             "concrete omission list",
             "no paper margin, white bars, outline",
             "paper texture and artistic whitespace belong only to the lower panel",
-            "1/20",
-            "100% uniform and flat",
         ),
     }
     for relative, required_phrases in prompt_contracts.items():

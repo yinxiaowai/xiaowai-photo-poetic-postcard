@@ -63,7 +63,7 @@ The MD contains the complete observation and drawing method. No template fields 
 
 ## Basic image tools
 
-If the tool understands reference images and long instructions, upload the source and paste the complete guide. Otherwise ask a vision-capable Agent to apply the standalone guide to the photo and produce concrete drawing instructions. Use those with the same source image, preserving the panel, subject, omission, copy, and swatch requirements that apply.
+If the tool understands reference images and long instructions, upload the source and paste the complete guide. Otherwise ask a vision-capable Agent to apply the standalone guide to the photo and produce concrete drawing instructions. Use those with the same source image, preserving the panel, subject, omission, and copy requirements that apply.
 
 If reference images are unsupported, the workflow cannot reliably preserve or derive from the source photo and should not be described as fully completed.
 

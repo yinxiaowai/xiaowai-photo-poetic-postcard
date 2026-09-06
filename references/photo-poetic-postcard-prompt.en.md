@@ -1,8 +1,8 @@
 # Photo Poetic Postcard | Standalone Drawing Guide
 
-Read this entire document, inspect the user's uploaded photo, and create one complete postcard with the original photograph above, one illustrated subject below, a Chinese title and short note, and three sampled color swatches.
+Read this entire document, inspect the user's uploaded photo, and create one complete postcard with the original photograph above, one illustrated subject below, a Chinese title and short note.
 
-This document works independently. Upload the photo and attach this MD file to an image-capable Agent, or paste its full text into the conversation. No Skill installation, project homepage, other file, code, or variable form is required. Make the visual decisions yourself when the user supplies no additional settings; apply explicit customization as described in section 13.
+This document works independently. Upload the photo and attach this MD file to an image-capable Agent, or paste its full text into the conversation. No Skill installation, project homepage, other file, code, or variable form is required. Make the visual decisions yourself when the user supplies no additional settings; apply explicit customization as described in section 12.
 
 ## 1. Two uses of the source photograph
 
@@ -23,7 +23,7 @@ Before generation, make these decisions internally; normally the user does not n
 2. Separate features that make it recognizable from things that merely happen to appear nearby.
 3. Choose one concrete subject and make two brief lists: required features and environment to omit below.
 4. Check reliable place evidence before composing the copy.
-5. Arrange the lower subject, text, and swatches according to the subject's shape and visual weight.
+5. Arrange the lower subject and text according to the subject's shape and visual weight.
 
 Prefer a subject explicitly named by the user. Otherwise balance visual focus, distinctiveness, and the photo's theme. The largest area is not necessarily the subject: a small boat may be more meaningful than the surrounding sky.
 
@@ -78,7 +78,7 @@ For a 1080 × 1440 canvas, each region is 1080 × 720. This describes panel heig
 
 The panels meet directly with a clear boundary. Shared colors provide coherence; do not dissolve the photograph into an all-over watercolor with a broad gradient.
 
-Generate the complete work in one image-generation operation, including the photograph, illustration, paper, text, swatches, and layout. Do not generate the bottom separately and stitch it to the photo, or add text and squares programmatically afterward.
+Generate the complete work in one image-generation operation, including the photograph, illustration, paper, text, and layout. Do not generate the bottom separately and stitch it to the photo, or add text programmatically afterward.
 
 ## 6. Fit the photograph [Upper panel — source photo lock]
 
@@ -88,7 +88,7 @@ Upper-panel zero margins and lower-panel breathing room are separate rules. For 
 
 Inspect the three outer photo edges and the panel boundary. Any paper gap between the photograph and the canvas top, left, or right edge, or any thin line framing the photograph, fails the design even if the lower illustration is correct.
 
-Preserve photographic subjects, lighting, colors, spatial relationships, and character. The lower medium must not stylize the upper photograph. Add no title, note, swatches, or decoration above.
+Preserve photographic subjects, lighting, colors, spatial relationships, and character. The lower medium must not stylize the upper photograph. Add no title, note, or decoration above.
 
 When the source and photo-region ratios differ:
 
@@ -109,7 +109,7 @@ Reinterpret only the selected subject. Default to transparent watercolor with a 
 - Concentrate detail where recognition requires it; simplify peripheral areas and let edges dissolve into paper.
 - If the source already cuts off the subject, retain a natural partial view or fade the crop edge. Do not invent unseen structures or limbs merely to complete a silhouette.
 
-Richness should come from the subject's own material, light, detail, and brushwork. If too sparse, add modest internal detail or a close grounding cue. If too full, remove the environment first, then reduce the subject and wash.
+Richness should come from the subject's own material, light, detail, and brushwork. If too sparse, add modest internal detail and soft washes spreading beyond the silhouette. If too full, remove the environment first, then reduce the subject and wash.
 
 A user-requested ink, printmaking, pencil, or other medium changes the lower treatment while preserving subject selection and panel roles.
 
@@ -120,11 +120,11 @@ All sizes refer to the lower panel. Treat the following as starting points and j
 - Bridges and wide buildings usually occupy about 55%–70% of lower width while remaining relatively low.
 - People, animals, and compact objects usually occupy about 40%–55%. Do not force a tall subject to meet a width target at the expense of its top and bottom clearance.
 - Simple rings, symbols, or installations with large internal holes should start smaller. Their outer contour still has visual weight even when the center is empty.
-- Detailed architecture can retain more internal information while leaving space around its silhouette, text, and swatches.
+- Detailed architecture can retain more internal information while leaving space around its silhouette and text.
 
 Keep at least about 45% of the lower region visibly quiet by default. Quiet paper is continuous, low-contrast space without scenery. A dense watercolor background made pale does not count as clean breathing room. This is a visual target; do not pretend to have measured a segmentation mask.
 
-The subject may sit left, center, right, slightly high, or slightly low. Leave clearance on all sides; roughly 5% of lower width is a useful starting inset. Preserve room for readable copy and at least one continuous area containing no visual element.
+Compose the lower panel independently: retain the subject's identity, structure, and features, not its source-photo coordinates. Even a centered photographic subject may sit left, right, slightly high, or slightly low below. Adjust scale and position together with copy and breathing room; do not force vertical alignment between the panels. Leave clearance on all sides; roughly 5% of lower width is a useful starting inset. Preserve room for readable copy and at least one continuous area containing no visual element.
 
 ## 9. Paper, wash, and palette
 
@@ -132,9 +132,9 @@ Default to warm, low-saturation ivory paper below, with fine, subdued fibers. Av
 
 Select colors actually present in the source: a principal subject color for recognition, a deeper tone for structure and copy, and a lighter supporting tone. Gentle desaturation is allowed; do not make every photo use the same green or orange palette.
 
-Use at most one localized, soft, translucent, irregular wash behind the subject. It may be omitted entirely.
+By default, use one connected, soft, translucent watercolor wash behind the subject, forming a single visual unit with it. This is atmospheric color, not a separate object or merely a grounding shadow.
 
-- Keep it near the subject and let its edges retreat into paper.
+- Let it spread loosely beyond the upper and side contours, with uneven pigment, wet bleeding edges, and gentle asymmetry fading into paper. Avoid a uniform halo. Some grounding below is fine, but do not reduce the wash to a strip under the subject.
 - Do not form a rectangular image backing, complete circular disk, or large opaque geometric shape.
 - Do not paint trees, clouds, mountains, buildings, or a second focal point inside it.
 - Reduce its extent or strength if it occupies the text area or obscures the subject.
@@ -159,7 +159,7 @@ For automatically composed Chinese copy, prefer common simplified characters, fa
 
 This applies only to ordinary copy composed by the Agent. Preserve confirmed place, landmark, and personal names and user-supplied wording exactly, even when their characters are complex. Do not delete characters, substitute homophones, abbreviate, or romanize them without permission. Before generation, simplify surrounding original copy, plan suitable type size, and choose clear lettering.
 
-## 11. Typography and copy placement
+## 11. Typography and copy placement [Typography and layout]
 
 The Agent actively selects typography from the image by default; there is no preset Song font and no need for the user to request a change. Consider subject, mood, and illustration medium, then copy length, glyph complexity, and display size. Choose one clear, compatible main treatment. Honor an explicit user font choice.
 
@@ -171,6 +171,8 @@ The Agent actively selects typography from the image by default; there is no pre
 These are possibilities, not fixed subject-to-font mappings. The same subject can call for different typography depending on mood and medium. Do not rotate fonts randomly or force all work into either Song or handwriting. Usually keep one main treatment, using size and weight to distinguish the larger title from the lighter note in a compact group.
 
 Handwriting must retain distinguishable glyphs, complete strokes, and comfortable spacing. Avoid tangled cursive, broken strokes, elaborate decoration, and ultra-thin small text. Specify the selected treatment in the image-tool prompt, such as “natural handwritten regular script, clear complete strokes, slight handmade variation, no joined cursive.” Do not merely say “choose a suitable font” or pass a menu of alternatives to be mixed. Do not claim exact use of a named font file without verification.
+
+Treat text as a quiet postcard annotation, not a poster headline. Start with title glyph height around 3%–4% of canvas width and note height around 2.4%–3%, adjusting for copy length, type design, and display size. Keep the title only modestly more prominent than the note. The text group should be small and clear, never oversized or heavy enough to compete with the illustration; do not achieve subtlety by making it illegible. Honor explicit user size choices.
 
 Choose a deeper source-derived text color with sufficient contrast against the paper, not automatically the brightest accent.
 
@@ -184,23 +186,7 @@ Place copy according to the illustration's silhouette:
 
 Keep all copy inside the lower region, clear of the subject and canvas edges. For longer copy, adjust line breaks, size, and surrounding space; do not distort glyphs or enlarge the entire lower panel to accommodate it.
 
-## 12. Three swatches and adaptive placement [Typography and swatches]
-
-Choose three representative source colors that are visibly distinguishable. They may correspond to the principal subject, supporting environment, and dark structure. A monochrome source can use three distinct grays.
-
-The swatches are a minor palette annotation:
-
-- Exactly three equal, perfect squares in a compact horizontal row.
-- Each side is approximately 1/20 of lower-panel width.
-- Each fill is 100% uniform and flat, without paper texture, patterns, gradients, photo fragments, text labels, or shadows.
-- Do not turn sampled colors into miniature photographs.
-- No circles, irregular shapes, or fourth square.
-
-Place the group in any sufficiently open corner of the lower panel, inset from its edges. Upper-left and upper-right here mean near the top of the lower panel, never the photographic corners of the whole image.
-
-Place the subject and copy first, then choose among the remaining corners. When several work equally well, select randomly; reconsider if the choice causes collision or imbalance. Across different photos, vary the subject, copy, and swatches naturally.
-
-## 13. User-adjustable choices
+## 12. User-adjustable choices
 
 Explicit user choices override defaults. Resolve unspecified settings through observation.
 
@@ -212,18 +198,17 @@ Explicit user choices override defaults. Resolve unspecified settings through ob
 | Subject scale and offset | Make it smaller, airier, or moderately larger | Clear space outside the silhouette |
 | Paper and color mood | Warm/cool white, smooth/fiber paper, modest color adjustment | No corresponding art filter over the photograph |
 | Title, note, language, type | Use exact requested copy; omit note or all text if requested | Readability and lower-only placement when shown |
-| Swatches | Reposition, resample, reduce size, or hide | Three equal solid squares when shown |
-| Lower arrangement | Rebalance illustration, copy, and palette | No overlap or competing focus |
+| Lower arrangement | Rebalance illustration and copy | No overlap or competing focus |
 
-When the user requests no text or no swatches, disable the corresponding defaults and checks. The resulting space may stay empty; do not restore the full scene to fill it. A request for another language also overrides the Chinese-only default.
+When the user requests no text, disable the corresponding defaults and checks. The resulting space may stay empty; do not restore the full scene to fill it. A request for another language also overrides the Chinese-only default.
 
-## 14. Execution in different Agents
+## 13. Execution in different Agents
 
 A host that can inspect the photo and generate from a reference image can use this document directly. No repository installation, code execution, or exclusive model is required.
 
 If you call a separate image tool, turn your observations into complete, specific drawing instructions, preserving every applicable requirement without summarizing away the subject, omission list, split, copy, palette, or whitespace. Attach the original photo. You may resolve general guidance into image-specific decisions; tool-capability explanations should not appear in the artwork.
 
-Use separate sections for [Canvas structure], [Upper panel — source photo lock], [Lower panel — one extracted subject], [Typography and swatches], and [Prohibitions and delivery]. Populate each with concrete decisions; do not send empty headings or depend on another file.
+Use separate sections for [Canvas structure], [Upper panel — source photo lock], [Lower panel — one extracted subject], [Typography and layout], and [Prohibitions and delivery]. Populate each with concrete decisions; do not send empty headings or depend on another file.
 
 - **Vision and generation:** analyze and generate directly. Do not require user approval of a prompt by default.
 - **Vision only:** return a complete image-specific drawing instruction and explain that it needs a reference-image generator. Repeating this generic document is not completed photo analysis.
@@ -232,7 +217,7 @@ Use separate sections for [Canvas structure], [Upper panel — source photo lock
 
 When real size, ratio, or image-count parameters are available, set them consistently with the text. Do not claim an unavailable setting was applied.
 
-## 15. Inspect and correct [Prohibitions and delivery]
+## 14. Inspect and correct [Prohibitions and delivery]
 
 Check composition before fine detail:
 
@@ -241,17 +226,15 @@ Check composition before fine detail:
 3. The lower area contains only the selected subject and necessary attached cues; concrete omitted background objects did not return.
 4. Scale is balanced and clean paper remains around the subject; it is not a smaller complete landscape painting.
 5. Resolve copy and typography before generation; this workflow requires no post-generation OCR, typo detection, correction, or typo-triggered retry.
-6. Swatch count, shape, size, fill, and placement are correct, or absent when requested.
-7. There is no extra decoration, instructional copy, logo, signature, watermark, frame, or candidate grid.
+6. There is no extra decoration, instructional copy, logo, signature, watermark, frame, or candidate grid.
 
-Correct the cause: remove restored scenery for a full-scene repeat; reduce the subject and wash for crowding; add internal subject detail for sparseness; reposition copy when cramped; enforce uniform fill when swatches resemble fragments.
+Correct the cause: remove restored scenery for a full-scene repeat; reduce the subject and wash for crowding; add internal detail and soft perimeter washes for sparseness; reposition copy when cramped.
 
 Corrections must still regenerate or edit the complete work through image generation, never programmatic stitching, cropping of the finished art, or text overlays. If the tool persistently cannot satisfy the request, state the failed criterion rather than claiming compliance or generating indefinitely.
 
+## 15. Final delivery
 
-## 16. Final delivery
-
-By default, one source photo produces one complete postcard. Photography, illustration, paper, copy, swatches, and layout belong to the same generated work.
+By default, one source photo produces one complete postcard. Photography, illustration, paper, copy, and layout belong to the same generated work.
 
 Do not proactively request multiple styles or a four-up grid. If the host automatically returns several images and selection is available, show one compliant result. If the platform preview cannot be controlled, explain that accurately.
 

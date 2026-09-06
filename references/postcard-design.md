@@ -16,12 +16,12 @@ Resolve these once before generating:
 | Title | Confirmed place name or scene-based Chinese title | A confirmed place must appear verbatim in the title or note; otherwise never guess |
 | Note | 6–10 Chinese characters | Quiet, natural postcard tone; no invented facts |
 | Typography | Agent-selected for this image | Match subject, mood, medium, and legibility; no default Song font; explicit user choice takes priority |
-| Colors | Three sampled colors | Distinct, representative, fixed order |
+| Colors | Source-derived color relationships | Preserve the photograph's characteristic color mood |
 | Canvas | 3:4 portrait | Use the user's ratio or dimensions when provided |
 | Panel split | Strict 50 / 50 | Default to two equal independent regions for maximum cross-model reliability; change only when the user explicitly asks |
 | Rendering | Transparent watercolor + light gouache + colored pencil | Replace or blend only when the user requests another medium |
 
-If the user supplies title or note text, preserve it exactly. If the user requests no text or no swatches, remove that system and rebalance the whitespace.
+If the user supplies title or note text, preserve it exactly. If the user requests no text, remove it and rebalance the whitespace.
 
 ## Place and title evidence
 
@@ -63,7 +63,7 @@ The subject needs a complete, natural silhouette with watercolor edges dissolvin
 - The photo fills the upper region edge to edge and touches the canvas top, left, and right edges. There is no paper margin, hairline, outline, border, or frame around it.
 - Its bottom edge meets the panel boundary without a paper strip or divider stroke. Paper texture and breathing room belong only to the lower region; never place a smaller photo on an ivory mat around the whole composition.
 - Use cover-style cropping when source and target ratios differ. Crop only what is necessary, preserve the main subject, never stretch the photo, and never invent an extension.
-- The lower main element stays contained and never touches the edges. Position it left, center, or right according to its silhouette and the available negative space.
+- The lower main element stays contained and never touches the edges. Preserve its identity, not its coordinates in the source photo. Independently choose left, center, or right and adjust scale around the lower text and negative space; no forced alignment with the upper subject.
 - Preserve at least about 45% of the lower panel as visibly quiet paper. Horizontal or detailed subjects may use about 55–70% of lower-panel width; people, animals, rings, and compact subjects normally use about 40–55%.
 - The desired density is slightly fuller than a sparse isolated cutout but clearly lighter than a full-scene watercolor. Add only one localized wash or one directly attached cue; never reconstruct a recognizable environment.
 
@@ -72,10 +72,9 @@ The subject needs a complete, natural silhouette with watercolor edges dissolvin
 Use only these layers:
 
 1. paper field;
-2. one faint irregular translucent wash;
+2. one connected translucent wash spreading from behind the subject beyond its upper and side contours, with irregular wet edges fading into paper, not just a grounding strip;
 3. one extracted main element and minimal cues;
-4. optional title and note;
-5. optional three-color swatch group.
+4. optional title and note.
 
 Do not add geometric collage, large opaque blocks, decorative stickers, drop shadows, a second focal point, or unrelated ornaments.
 
@@ -91,9 +90,8 @@ Do not add geometric collage, large opaque blocks, decorative stickers, drop sha
 | Paper | warm ivory, cool gray-white, handmade fiber, smooth museum stock | Quiet low-contrast field |
 | Text | custom title/note, another language, no text | Exact spelling; no extra copy |
 | Typography | Automatically scene-matched; handwriting, regular script, rounded, serif, sans, or user-specified | Legibility and hierarchy; no fixed default family |
-| Swatches | reposition, recolor from photo, hide | If shown, exactly three solid squares; each side is about 1/20 of lower-panel width |
 | Color | faithful, muted, warmer, cooler, monochrome accent | Traceable to source; avoid arbitrary palette replacement |
-| Layout | subject may shift left/center/right; text and swatch group may use any lower-panel corner | Choose from actual negative space; do not repeat one default layout |
+| Layout | subject may shift left/center/right; text may use any lower-panel corner | Choose from actual negative space; do not repeat one default layout |
 
 ## Prompt blocks
 
@@ -102,16 +100,16 @@ Do not add geometric collage, large opaque blocks, decorative stickers, drop sha
 Use this structure for a reference-image model:
 
 ```text
-Create one finished {canvas ratio or dimensions} poetic postcard from the attached source photo in one image-generation operation. Divide it into two independent horizontal regions, defaulting to an exact 50/50 split unless the user explicitly changes it. Generate the upper photo region, lower reinterpretation, paper, typography, color swatches, and complete layout together. Do not generate separate panels and do not rely on later compositing or text overlay.
+Create one finished {canvas ratio or dimensions} poetic postcard from the attached source photo in one image-generation operation. Divide it into two independent horizontal regions, defaulting to an exact 50/50 split unless the user explicitly changes it. Generate the upper photo region, lower reinterpretation, paper, typography, and complete layout together. Do not generate separate panels and do not rely on later compositing or text overlay.
 
 [Upper region — source photo lock]
 Fill the upper {photo share} of the canvas edge to edge with the source photo. The photo must touch the canvas top, left, and right edges with no paper margin, hairline, outline, border, or frame. Use cover-style cropping only as needed to fit the region; preserve the main subject, never stretch the photo, and never generatively extend it. Preserve the photo's subject, lighting, color relationships, spatial relationships, and photographic character. Do not redraw, replace, beautify, retouch, or add anything to the photograph.
 
 [Lower region — one extracted subject]
-Apply DECONSTRUCT → SELECTIVE PRESERVATION → DISTILL → RECONSTRUCT. Reinterpret only {main element}. Preserve only {zero to three attached identity cues}. Explicitly omit {background omit list}. The lower illustration must not reproduce a recognizable environment or become a miniature of the source photo. Render it in {medium}. Keep a complete natural silhouette with edges dissolving into paper; do not use a rectangular image tile, border, shadow, or floating card. {scale and position instruction}. Preserve at least about 45% visibly quiet paper. Add at most one localized, soft, irregular, translucent wash, never a second scene or focal point.
+Apply DECONSTRUCT → SELECTIVE PRESERVATION → DISTILL → RECONSTRUCT. Reinterpret only {main element}. Preserve only {zero to three attached identity cues}. Explicitly omit {background omit list}. The lower illustration must not reproduce a recognizable environment or become a miniature of the source photo. Render it in {medium}. Keep a complete natural silhouette with edges dissolving into paper; do not use a rectangular image tile, border, shadow, or floating card. {scale and position instruction}. Preserve at least about 45% visibly quiet paper. Use one connected soft watercolor wash behind the subject, spreading unevenly beyond its upper and side contours into paper, not only beneath its base; never form a second scene or focal point.
 
-[Typography and palette]
-Write the title exactly as “{title}” and the note exactly as “{note}” in {typography/language}. When {confirmed place} is available, its exact name must appear verbatim in the title or note. Place the text in {text position chosen from negative space}. Add exactly three equal, tiny, solid-color square swatches sampled from the photo — {hex colors} — as one compact group at {a different clear corner when possible}. Each square's side is about 1/20 of the lower-panel width, with a perfectly uniform flat fill and no texture, image content, gradient, circle, or irregular shape. Text and swatches may use upper-left, upper-right, lower-left, or lower-right within the lower panel; do not always default to the same pair. Do not add any other text, number, logo, signature, or watermark.
+[Typography and layout]
+Write the title exactly as “{title}” and the note exactly as “{note}” in {typography/language}. When {confirmed place} is available, its exact name must appear verbatim in the title or note. Place the text in {text position chosen from negative space}. Keep it a quiet postcard annotation: title glyph height about 3%–4% of canvas width, note about 2.4%–3%, with readable strokes and no oversized headline. Text may use upper-left, upper-right, lower-left, or lower-right within the lower panel; do not always default to the same corner. Do not add any other text, number, logo, signature, or watermark.
 
 [Art direction]
 Use {paper} and {color treatment}. Keep the result quiet, airy, contemporary, and editorial. Return one complete image only.
@@ -122,9 +120,8 @@ Use {paper} and {color treatment}. Keep the result quiet, airy, contemporary, an
 - **Upper photo changed:** strengthen reference-image fidelity and edit the same complete design; if the host still cannot preserve it, disclose the limitation rather than switching to a stitched workflow.
 - **Whole scene repeated below:** name the single subject and explicitly list the omitted environment.
 - **Panel feels too full:** remove environmental cues first, then reduce the subject and wash until at least about 45% clean paper remains.
-- **Layout feels repetitive:** move the subject, copy, and swatch group according to actual negative space; keep each group separate and vary valid arrangements across a gallery.
+- **Layout feels repetitive:** move the subject and copy according to actual negative space; keep each group separate and vary valid arrangements across a gallery.
 - **Subject too large:** switch from expansive to compact scale and increase whitespace.
-- **Swatches become photo fragments:** specify solid fill, equal small squares, no texture or gradient, and correct the complete image in the generation stage.
 - **Model returns multiple options:** repeat “one complete final image only” and discard grids or candidate sheets.
 - **Wrong canvas ratio:** inspect pixel dimensions and correct the same complete design in the image-generation stage. Do not crop or resize the final artwork with code.
 - **Agent shortens the prompt:** do not generate. Recompile the mandatory five-section prompt from `SKILL.md`, resolve every placeholder, and send it verbatim.

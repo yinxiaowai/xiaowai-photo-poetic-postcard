@@ -15,14 +15,11 @@
   <circle cx="118" cy="550" r="260" fill="#C46A32" opacity="0.08"/>
   <g transform="translate(100 74)" filter="url(#shadow)">
     <rect width="300" height="450" rx="8" fill="#FFFCF8"/>
-    <rect x="22" y="22" width="256" height="198" fill="#B7C3BF"/>
-    <path d="M22 175 C78 118 117 170 164 126 C206 87 240 118 278 80 L278 220 L22 220Z" fill="#4E6C67"/>
+    <rect width="300" height="225" fill="#B7C3BF"/>
+    <path d="M0 175 C78 118 117 170 164 126 C206 87 240 118 300 80 L300 225 L0 225Z" fill="#4E6C67"/>
     <circle cx="226" cy="70" r="26" fill="#E6C28A"/>
     <path d="M53 346 C92 263 182 258 246 326 C218 382 130 402 53 346Z" fill="#C46A32" opacity="0.17"/>
     <path d="M92 352 C113 304 151 283 189 302 C212 315 221 343 210 369 C175 389 128 385 92 352Z" fill="none" stroke="#A16207" stroke-width="6" stroke-linecap="round"/>
-    <rect x="56" y="405" width="13" height="13" fill="#4E6C67"/>
-    <rect x="76" y="405" width="13" height="13" fill="#C46A32"/>
-    <rect x="96" y="405" width="13" height="13" fill="#D8B48A"/>
   </g>
   <g fill="#2F2A25">
     <text x="500" y="215" font-family="Georgia, 'Noto Serif', serif" font-size="72" font-weight="700">Photo Poetic Postcard</text>
@@ -33,4 +30,3 @@
   <rect x="619" y="409" width="64" height="10" rx="5" fill="#D97706"/>
   <rect x="697" y="409" width="38" height="10" rx="5" fill="#A16207"/>
 </svg>
-
