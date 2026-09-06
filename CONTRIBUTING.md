@@ -26,3 +26,7 @@ Thank you for improving Photo Poetic Postcard.
 6. Explain the host, image capability, test photo rights, and observed result.
 
 By contributing text, you agree that it may be distributed under CC BY-NC-SA 4.0. By contributing code under `tools/`, you agree that it may be distributed under MIT. Do not contribute material you cannot license on those terms.
+
+## Publishing standalone MD updates
+
+Follow [Standalone MD versions](docs/PROMPT_VERSIONS.md). Update public versioned entry links together with `VERSION`; validation rejects stale or development-only entries. Releases include exact tagged Chinese/English MD files and a version/hash manifest. Keep existing tags and assets immutable, and verify latest-download targets after publication.

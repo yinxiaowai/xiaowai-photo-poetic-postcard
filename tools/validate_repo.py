@@ -7,6 +7,8 @@ import re
 import sys
 from pathlib import Path
 
+from release_prompts import check_entries
+
 
 ROOT = Path(__file__).resolve().parents[1]
 REQUIRED = (
@@ -107,7 +109,7 @@ def webp_dimensions(path: Path) -> tuple[int, int] | None:
 
 
 def main() -> int:
-    failures: list[str] = []
+    failures: list[str] = check_entries()
     for relative in REQUIRED:
         if not (ROOT / relative).is_file():
             fail(f"missing required file: {relative}", failures)

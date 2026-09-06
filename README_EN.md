@@ -130,12 +130,16 @@ Use xiaowai-photo-poetic-postcard to turn this photo into one poetic postcard.
 
 ## Method 2: use the Prompt MD directly
 
-No project installation is needed. Upload one photo and attach either MD file to an Agent, or paste its full text:
+No project installation or repository-homepage access is needed. Upload a photo and send the online MD link directly to the Agent. If it cannot read URLs, download and attach the MD, or paste its full text.
 
-| Language | File |
-| --- | --- |
-| Chinese | [references/photo-poetic-postcard-prompt.zh-CN.md](references/photo-poetic-postcard-prompt.zh-CN.md) |
-| English | [references/photo-poetic-postcard-prompt.en.md](references/photo-poetic-postcard-prompt.en.md) |
+Current release: **v1.3.0**. Online links pin that release; download links follow GitHub's latest stable Release.
+
+| Language | Current release online MD (send to an Agent) | Latest release MD (download and attach) |
+| --- | --- | --- |
+| Chinese | [Complete Chinese guide · v1.3.0](https://github.com/yinxiaowai/xiaowai-photo-poetic-postcard/blob/v1.3.0/references/photo-poetic-postcard-prompt.zh-CN.md) | [Download Chinese MD](https://github.com/yinxiaowai/xiaowai-photo-poetic-postcard/releases/latest/download/photo-poetic-postcard-prompt.zh-CN.md) |
+| English | [Complete English guide · v1.3.0](https://github.com/yinxiaowai/xiaowai-photo-poetic-postcard/blob/v1.3.0/references/photo-poetic-postcard-prompt.en.md) | [Download English MD](https://github.com/yinxiaowai/xiaowai-photo-poetic-postcard/releases/latest/download/photo-poetic-postcard-prompt.en.md) |
+
+Old version links stay old: copy the current link from this page when updating. No URL can forcibly clear a third-party Agent's cache. Download and attach the MD if it still reads stale content. See [Version and update notes](docs/PROMPT_VERSIONS.md).
 
 This is the recommended route for Dreamina, Doubao, and other image-capable Agents without a documented GitHub Skill installer.
 
@@ -144,6 +148,10 @@ Each file is a self-contained **15-section drawing guide** covering image roles,
 Ask the Agent to process your photo using the attached guide. It decides unspecified layout, copy, colors, and brushwork from the image. Add adjustments in ordinary language, such as “make the lower area airier, use light ink.”
 
 The [Xiaoqikong example](references/example-xiaoqikong-compiled-prompt.zh-CN.md) is optional reading to illustrate one application. It is not required for Method 2, and its place, copy, and colors are specific to that photo.
+
+### Jimeng: generate only, or generate and add a reusable skill
+
+The [Chinese README's Method 2 examples](README.md#方式二把-md-当作完整提示词直接使用) include two copy-ready prompts reported as successful by the user in Jimeng: generation only, and generation followed by a native “添加技能” card for user confirmation. Both explicitly override v1.3.0's single-result default with four independent 3:4 candidates using 图片 5.0 Lite. All four retain the same core subject and vary the lower composition, typography, and washes; they are not a four-panel image. These are platform-specific usage requests, not changes to the model-neutral drawing guide or a promise of GitHub installation support in every Agent.
 
 ## Cross-Agent execution design
 

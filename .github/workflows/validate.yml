@@ -19,6 +19,8 @@ jobs:
         run: python tools/validate_repo.py
       - name: Compile Python
         run: python -m compileall -q tools
+      - name: Test prompt release tooling
+        run: python -m unittest discover -s tools -p "test_*.py"
       - name: Build distribution archives
         run: python tools/build_packages.py
       - name: Upload installable archives

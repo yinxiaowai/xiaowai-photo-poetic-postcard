@@ -55,9 +55,11 @@ This project does not claim an unverified GitHub Skill installer for these produ
 
 1. Open an image-capable Agent or creation workspace.
 2. Upload one source photo.
-3. Attach the [Chinese](../references/photo-poetic-postcard-prompt.zh-CN.md) or [English](../references/photo-poetic-postcard-prompt.en.md) drawing guide, or paste its full text.
+3. Send the current release's [Chinese](https://github.com/yinxiaowai/xiaowai-photo-poetic-postcard/blob/v1.3.0/references/photo-poetic-postcard-prompt.zh-CN.md) or [English](https://github.com/yinxiaowai/xiaowai-photo-poetic-postcard/blob/v1.3.0/references/photo-poetic-postcard-prompt.en.md) MD link. If URL reading fails, download the latest [Chinese MD](https://github.com/yinxiaowai/xiaowai-photo-poetic-postcard/releases/latest/download/photo-poetic-postcard-prompt.zh-CN.md) or [English MD](https://github.com/yinxiaowai/xiaowai-photo-poetic-postcard/releases/latest/download/photo-poetic-postcard-prompt.en.md) and attach it, or paste its full text.
 4. Add dimensions, split, medium, or copy preferences in ordinary language, or proceed with automatic decisions.
-5. Keep one final image; reject multi-image grids.
+5. v1.3.0 defaults to one final image. When explicitly requesting four candidates, deliver four independent postcards, not a four-panel image.
+
+See the [Chinese README's Method 2 examples](../README.md#方式二把-md-当作完整提示词直接使用) for generation-only and generation-plus-native-skill-card prompts reported as successful by the user in Jimeng. A native card requires user confirmation and is not proof of general GitHub installation support. Saved skills do not automatically synchronize with the repository. See [Version and update notes](PROMPT_VERSIONS.md).
 
 The MD contains the complete observation and drawing method. No template fields or additional project files are needed. The Agent resolves the subject, omissions, and layout from the photo, then conveys those decisions and active requirements to the image model.
 

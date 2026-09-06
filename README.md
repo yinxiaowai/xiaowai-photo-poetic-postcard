@@ -68,7 +68,7 @@ WaytoAGI 认证讲师 & 视频学社主理人 & AI工具测评专家
 
 ## 它解决了什么
 
-- 一张原图只交付一张最终成品，不生成四张候选或四宫格。
+- v1.3.0 默认一张原图交付一张完整成品；下方即梦示例明确改为四张独立候选，不合成四宫格。
 - 不把下半区做成整幅照片的水彩复刻，只转绘一个主元素。
 - 采用“拆解 → 选择性保留 → 蒸馏 → 重构”：只保留主体和零至三个直接相连的辨识线索，明确删除可识别的完整背景。
 - 不写死 Image Gen、即梦、豆包或其他模型，根据当前 Agent 的真实能力选择执行方式。
@@ -150,12 +150,16 @@ gemini skills install https://github.com/yinxiaowai/xiaowai-photo-poetic-postcar
 
 ### 方式二：把 MD 当作完整提示词直接使用
 
-无需安装项目。上传一张照片，再把下面任一 MD 文件作为附件发送给 Agent，或复制全文到对话中：
+无需安装项目，也无需让 Agent 读取项目首页。上传一张照片，把下面的**在线 MD 链接**发给 Agent；如果它不能读取链接，下载 MD 后作为附件上传，或复制全文。
 
-| 语言 | 文件 |
-| --- | --- |
-| 中文 | [references/photo-poetic-postcard-prompt.zh-CN.md](references/photo-poetic-postcard-prompt.zh-CN.md) |
-| English | [references/photo-poetic-postcard-prompt.en.md](references/photo-poetic-postcard-prompt.en.md) |
+当前发布版：**v1.3.0**。在线阅读锁定该版本；固定下载入口跟随 GitHub 最新正式 Release。
+
+| 语言 | 当前发布版在线 MD（推荐发给 Agent） | 最新发布版 MD 下载（作为附件） |
+| --- | --- | --- |
+| 中文 | [中文完整绘图规范 · v1.3.0](https://github.com/yinxiaowai/xiaowai-photo-poetic-postcard/blob/v1.3.0/references/photo-poetic-postcard-prompt.zh-CN.md) | [下载中文 MD](https://github.com/yinxiaowai/xiaowai-photo-poetic-postcard/releases/latest/download/photo-poetic-postcard-prompt.zh-CN.md) |
+| English | [English complete guide · v1.3.0](https://github.com/yinxiaowai/xiaowai-photo-poetic-postcard/blob/v1.3.0/references/photo-poetic-postcard-prompt.en.md) | [Download English MD](https://github.com/yinxiaowai/xiaowai-photo-poetic-postcard/releases/latest/download/photo-poetic-postcard-prompt.en.md) |
+
+旧版本链接不会自动变成新版；需要更新时，从本页重新复制当前发布版链接。任何链接都不能强制清除第三方 Agent 的缓存；若仍读到旧内容，请下载 MD 并上传附件。[版本与更新说明](docs/PROMPT_VERSIONS.md)
 
 这也是即梦 Agent、豆包 Agent 或其他带生图能力但不支持 GitHub Skill 安装的平台的推荐方式。
 
@@ -164,6 +168,32 @@ gemini skills install https://github.com/yinxiaowai/xiaowai-photo-poetic-postcar
 可直接说：“请按这份绘图规范处理我上传的照片。”未指定的主体位置、文字、配色与笔触由 Agent 根据照片判断。需要微调时，用自然语言补充即可，例如“下方更松弛一些，改用淡墨”。
 
 如需了解一次具体任务如何落实规范，可选读 [荔波小七孔示例](references/example-xiaoqikong-compiled-prompt.zh-CN.md)。该示例不是方式二的必读文件，其地点、文案与配色只适用于对应照片。
+
+#### 即梦：只生图，不添加技能
+
+上传原图后复制。用户已反馈此用法在即梦测试通过；四张要求是本次明确覆盖 v1.3.0 的默认单张交付。
+
+```text
+请完整读取并使用这份绘图规范：
+https://github.com/yinxiaowai/xiaowai-photo-poetic-postcard/blob/v1.3.0/references/photo-poetic-postcard-prompt.zh-CN.md
+
+按规范处理我上传的原图，使用图片 5.0 Lite 模型，生成四张独立的 3:4 竖版明信片供我选择。本次将单张交付改为四张：保持同一个核心主体，通过下方主体的位置、大小、文字排版、适配字体和外围晕染形成设计差异，其余要求不变。每张均为完整明信片，不合成四宫格；实际生图保留完整五段指令，不简化遗漏。
+
+本次仅生成图片，不创建或安装技能。若无法读取规范全文，请说明并停止。
+```
+
+#### 即梦：生图后提供“添加技能”卡片
+
+用户已反馈以下精简版在新对话测试通过。卡片需用户点击确认；这是即梦内创建可复用技能，不代表所有平台都支持从 GitHub 安装项目。
+
+```text
+请完整读取这份绘图规范：
+https://github.com/yinxiaowai/xiaowai-photo-poetic-postcard/blob/v1.3.0/references/photo-poetic-postcard-prompt.zh-CN.md
+
+按规范处理我上传的原图，使用图片 5.0 Lite 模型，生成四张独立的 3:4 竖版明信片供我选择。本次将单张交付改为四张：保持同一个核心主体，通过下方主体的位置、大小、文字排版、适配字体和外围晕染形成设计差异，其余要求不变。每张均为完整明信片，不合成四宫格；实际生图保留完整五段指令，不简化遗漏。
+
+生成后，将上述通用规则保存为“照片诗意明信片”技能，提供带“添加技能”按钮的卡片供我确认，不要固定本次照片的主体和文案，也不要仅回复“已安装”。若无法读取全文或创建技能卡片，请明确说明。
+```
 
 ## 跨 Agent 的执行设计
 
@@ -208,7 +238,7 @@ gemini skills install https://github.com/yinxiaowai/xiaowai-photo-poetic-postcar
 
 1. 原图始终是唯一内容来源，上半区照片不应被语义重画、扩展或补造。
 2. 下半区只提取并转绘一个主元素，不把整幅原图重新画一遍。
-3. 最终是一张完整作品，不输出候选合集。
+3. 每张都是完整作品；用户明确要求多张候选时，分别输出，不合成四宫格。
 4. 地点判断顺序为“用户明确提供 > 清晰招牌/EXIF/定位 > 高置信度唯一地标”；确认后必须在标题或短注中原样出现，不能确认时不猜地名。
 5. 默认让上方照片铺满其区域，不留纸边、不加描边；比例不同时只做必要裁切，不拉伸、不扩图。
 6. 默认输出必须通过真实像素比例检查；3:4 作品出现 2:3 尺寸时必须在生图阶段修复。

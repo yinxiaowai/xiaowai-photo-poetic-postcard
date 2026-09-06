@@ -93,13 +93,15 @@ WorkBuddy 要求压缩包内部以 `skills/{skill-name}/SKILL.md` 组织，并�
 
 ## 即梦与豆包
 
-本项目目前没有找到它们支持从任意 GitHub 仓库安装 `SKILL.md` 的官方依据，因此不把“可安装”写成已验证能力。推荐流程：
+无需把项目首页交给 Agent，也不要求支持 GitHub 仓库安装。推荐直接读取独立 MD：
 
 1. 打开具备图片理解与生成能力的 Agent/创作入口。
 2. 上传一张原图。
-3. 附上 [中文绘图规范 MD](../references/photo-poetic-postcard-prompt.zh-CN.md) 文件，或复制全文。
+3. 发送 [当前发布版中文 MD · v1.3.0](https://github.com/yinxiaowai/xiaowai-photo-poetic-postcard/blob/v1.3.0/references/photo-poetic-postcard-prompt.zh-CN.md) 链接；无法读取时，[下载最新发布版 MD](https://github.com/yinxiaowai/xiaowai-photo-poetic-postcard/releases/latest/download/photo-poetic-postcard-prompt.zh-CN.md) 后上传附件，或复制全文。
 4. 用自然语言补充想调整的尺寸、比例、风格或文字；没有额外要求时直接执行。
-5. 只保留一张最终结果；多图网格视为不合格输出。
+5. v1.3.0 默认一张完整成品；明确要求四张时，输出四张独立候选，不合成四宫格。
+
+即梦的“只生图”和“生图后添加技能”两段使用提示词见 [首页方式二](../README.md#方式二把-md-当作完整提示词直接使用)，用户已反馈测试通过。“添加技能”指即梦内创建可复用技能卡片并由用户确认，不等于从任意 GitHub 仓库安装；其他 Agent 是否支持要以其实际能力为准。已保存的技能不会因仓库更新而自动同步。[版本与更新说明](PROMPT_VERSIONS.md)
 
 该 MD 本身含完整观察和绘图方法，不需要填写模板或另读项目文件。Agent 根据照片决定主体、取舍与布局，再把具体决定及生效规则传给图片模型。
 

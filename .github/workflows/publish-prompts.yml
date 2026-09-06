@@ -1,0 +1,33 @@
+name: Publish standalone prompt MDs
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing stable release tag (vMAJOR.MINOR.PATCH)
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    if: github.event_name == 'workflow_dispatch' || (!github.event.release.prerelease && !github.event.release.draft)
+    runs-on: ubuntu-latest
+    env:
+      RELEASE_TAG: ${{ inputs.tag || github.event.release.tag_name }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Export exact tagged Markdown and version manifest
+        run: python tools/release_prompts.py --tag "$RELEASE_TAG"
+      - name: Upload standalone files (never overwrite existing release assets)
+        run: gh release upload "$RELEASE_TAG" dist/prompts/photo-poetic-postcard-prompt.zh-CN.md dist/prompts/photo-poetic-postcard-prompt.en.md dist/prompts/prompt-release.json
