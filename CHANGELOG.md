@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.3.1 - 2026-09-07
+
+- Scoped perimeter washes and dissolving edges to the default watercolor blend and explicitly requested wet media. Other custom styles, including unlisted styles, use clean surroundings unless the user explicitly requests mixed media.
+- Made material, edge, and surrounding treatment resolve together before image generation. Origami retains crisp folded edges and may use a necessary subject-local contact shadow, without allowing photo/card shadows.
+- Removed unconditional wash instructions from generic handoff templates and sparse-layout fixes; preserved the default watercolor treatment and the existing geometry, extraction, typography, and copy rules.
+- Synchronized Chinese/English standalone guides, visual reference, example scope, installation packages, and versioned MD entry links. Standalone guides display their version for read-back verification.
+- The Jimeng usage flow was previously user-tested on v1.3.0. This medium-routing correction is checked at the instruction/package level; no new generated-image result is claimed.
+
 ## 1.3.0 - 2026-09-06
 
 - Removed swatch-generation instructions and parameters from the active Skill, standalone guides, examples, and installation documentation, without adding replacement negative prompts.

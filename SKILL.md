@@ -1,6 +1,6 @@
 ---
 name: xiaowai-photo-poetic-postcard
-description: Turn one user photo into one finished poetic postcard in a single image-generation operation, with a faithful photographic upper panel and a watercolor reinterpretation of exactly one extracted subject below. Use for literary travel postcards, photo-and-illustration split compositions, or customizable variations of this visual system.
+description: Turn one user photo into one finished poetic postcard in a single image-generation operation, with a faithful photographic upper panel and exactly one extracted subject below, using watercolor by default or a user-selected medium. Use for literary travel postcards, photo-and-illustration split compositions, or customizable variations of this visual system.
 ---
 
 # Photo Poetic Postcard
@@ -34,6 +34,7 @@ Read the [standalone Chinese drawing guide](references/photo-poetic-postcard-pro
 - `omit_list`: concrete visible nouns that must disappear from the lower panel;
 - `photo_subject` and `key_relations`: facts the upper photo must preserve;
 - `complexity`, `medium`, `subject_scale`, and `subject_position`;
+- `edge_treatment` and `surround_treatment`: concrete decisions resolved by the medium rules below;
 - exact `title` and `note` text;
 - `typography`: one concrete, scene-matched type treatment with readable strokes and spacing, chosen automatically unless specified by the user;
 - `place_name`, evidence source, and confidence;
@@ -47,6 +48,18 @@ Default to one exact 3:4 portrait image, strict 50/50 upper/lower regions, warm 
 Paper and breathing room apply only to the lower panel. The upper photo has zero margins: it covers the full canvas width from the top edge to the panel boundary. Never interpret “postcard paper” as an outer mat around the photograph or the whole work.
 
 ## Mandatory downstream prompt contract
+
+### Medium, edges, and surrounding treatment
+
+Resolve these together before compiling; a style change replaces the default material, edge, and surrounding treatment, not just the medium's name.
+
+- **No custom style:** keep the default watercolor/gouache/pencil blend and its connected translucent wash. Use natural edge diffusion and a source-colored wash spreading beyond the upper and side contours, uneven pigment and wet edges fading into paper, not merely a strip below the subject.
+- **Explicit watercolor, ink wash, or watercolor-based light wash:** use the matching wet-medium diffusion and surrounding wash, unless the user explicitly requests no wash or dry, crisp edges.
+- **Any other custom style, including unlisted styles:** do not inherit watercolor washes, wet bleeding, or dissolving edges. Origami, paper cutting, printmaking, line drawing, and pixel art use their own material and contour treatment with clean surrounding paper. Do not add a wash based on an aesthetic guess. A mixed style with a watercolor/ink-wash background is allowed only when explicitly requested by the user.
+
+For origami, resolve folded paper planes, creases, and crisp paper edges. A subtle contact shadow immediately against the lower subject is optional when needed for its material; it is not a glow, broad backdrop, photograph shadow, or floating-card shadow. No wash does not require a replacement decoration: use subject detail, scale, offset, and text layout for richness. Subject-attached cues (including water/reflections) follow the selected medium too; they do not authorize a watercolor halo.
+
+Put only the selected concrete edge and surrounding treatments into the image-tool prompt. Remove inactive wet-medium instructions from the template, examples, and sparse-layout fixes; do not leave “choose whether to wash” for the image model to decide. Upper-photo fidelity, full bleed, panel split, subject identity, and whitespace are unchanged by the lower style.
 
 ### Copy and adaptive typography
 
@@ -71,14 +84,14 @@ Apply explicit user overrides before compiling: omit text and its checks when no
 上半区使用上传的原摄影，原图主体为{photo_subject}，关键空间与视觉关系为{key_relations}。以cover方式铺满整个上半区，贴齐整张画布顶部、左边和右边，不留纸边、白边、描边、轮廓线、边框、相框或阴影。只允许为铺满上半区进行必要的等比裁切；不得拉伸，不得生成式扩图，并应保住主要主体。完整保留原图的主体、光影、色彩、空间关系和摄影质感，不得重画、替换、美化、修饰、增删或改写任何摄影内容。上半区除原摄影外绝对不能出现文字或其他元素。
 
 【下半区｜单一主体转绘】
-只提取并转绘{main_subject}，不是把整幅原图、同一场景或完整背景再画一遍。仅保留这些最低必要辨识线索：{identity_cues；没有则写“无额外线索”}。明确省略并禁止出现：{omit_list，必须写成与本图对应的具体可见对象}。采用“拆解 → 选择性保留 → 蒸馏 → 重构”，以{medium}表现主体的轮廓、结构、材质和关键配色。主体约占下半区宽度{subject_scale；按主体形状选择}，放在{subject_position}，该位置根据下方文字和留白独立确定，不照搬原图坐标或强制上下居中对齐；保持完整自然轮廓，边缘自然消融进纸面，不触碰下半区左右边缘或下边缘。下半区至少保留约45%连续、明显、干净的纸面，密度介于“孤立小图标”和“完整场景水彩”之间。主体后方采用连贯的半透明环境色水彩晕染，从轮廓向上方及两侧自然散开，深浅不均、湿边渗化、外围淡入纸面；不是只在脚下画一条承托。晕染与主体形成一个整体，保留周围安静纸面；不得形成可识别背景、第二场景、矩形图块或第二主体。
+只提取并转绘{main_subject}，不是把整幅原图、同一场景或完整背景再画一遍。仅保留这些最低必要辨识线索：{identity_cues；没有则写“无额外线索”}。明确省略并禁止出现：{omit_list，必须写成与本图对应的具体可见对象}。采用“拆解 → 选择性保留 → 蒸馏 → 重构”，以{medium}表现主体的轮廓、结构、材质和关键配色。主体约占下半区宽度{subject_scale；按主体形状选择}，放在{subject_position}，该位置根据下方文字和留白独立确定，不照搬原图坐标或强制上下居中对齐；保持自然可辨轮廓，采用{edge_treatment；写明本次媒介的具体边缘处理}，不触碰下半区左右边缘或下边缘。下半区至少保留约45%连续、明显、干净的纸面，密度介于“孤立小图标”和“完整场景复刻”之间。外围处理：{surround_treatment；写明本次已确定的晕染或干净纸面方案，不列候选分支}。主体与必要的局部承托形成一个整体，保留周围安静纸面；不得形成可识别背景、第二场景、矩形照片底板或第二主体。
 
 【文字与排版】
 文案已优先选用常见、自然、易辨认的字词；已确认地名及用户指定原文不作简写或替换。下述字体是根据本图内容、气质和文字密度选定的具体方案，不统一套用宋体；字形清楚、笔画完整、间距舒展，手写风格也不能连笔到难以辨字。
 标题严格写作“{title}”，短注严格写作“{note}”，采用{typography和language}，逐字准确，只出现一次。若地点或景点已确认，准确名称“{place_name}”必须在标题或短注中原样出现；未确认时不得编造。文字组仅放在下半区的{text_position}。文字是安静的小注记，不是海报大标题；标题字高约为整图宽度的3%—4%，短注约2.4%—3%，随实际字数微调且保持可读，不抢插画主体。文字组根据真实负空间安排，可位于下半区左上、右上、左下或右下，不得遮挡主体，也不得固定所有作品都使用同一角落。
 
 【禁止项与交付】
-禁止下半区完整场景复刻，禁止保留{omit_list}，禁止上半摄影被转绘，禁止上半区出现文字，禁止外框、照片边框、阴影、悬浮卡片、Logo、签名、水印、英文或任何未指定文字。检查实际像素比例、上下分区、原摄影保真、单一主体提取、具体省略项、留白。不要求生成后识别错字、纠字或因文字重试。上述构图项失败都应在生图阶段修复同一张完整作品，不得改用拼接或程序排字。最终仅展示并交付一张通过检查的完整成品。
+禁止下半区完整场景复刻，禁止保留{omit_list}，禁止上半摄影被转绘，禁止上半区出现文字，禁止外框、照片边框、照片及整张卡片的投影、悬浮卡片、Logo、签名、水印、英文或任何未指定文字。下方主体的必要局部接触阴影仅按已确定的媒介方案处理。检查实际像素比例、上下分区、原摄影保真、单一主体提取、具体省略项、留白。不要求生成后识别错字、纠字或因文字重试。上述构图项失败都应在生图阶段修复同一张完整作品，不得改用拼接或程序排字。最终仅展示并交付一张通过检查的完整成品。
 ```
 
 ## Downstream prompt preflight
@@ -93,6 +106,7 @@ Check the active brief: text items below apply only when enabled, and default ge
 - identifies one concrete `main_subject`; “same scene,” “whole landscape,” or an unresolved placeholder is not valid;
 - contains `只提取并转绘` followed by that concrete subject;
 - contains a concrete `omit_list` naming visible background elements from this photo;
+- resolves the medium, edge treatment, and surrounding treatment as one consistent branch; non-wet custom styles do not retain default wash/dissolve instructions, including in sparse-layout fixes; explicit mixed-media or no-wash requests take precedence;
 - contains the exact resolved title, note, and text position;
 - when text is enabled, resolves one scene-matched type treatment and checks original copy for avoidable glyph complexity without altering confirmed names or user wording;
 - contains the one-shot ban on stitching and programmatic typography;
@@ -140,5 +154,5 @@ Apply this checklist to the resolved brief: disabled text must be absent, and ex
 - The concrete omit list is absent from the lower panel.
 - Subject remains contained and at least about 45% of the lower paper is visibly quiet.
 - Title and note are placed only in the lower panel; spelling and confirmed-name preservation are specified before generation, not post-generation OCR checks.
-- No extra text, logo, signature, watermark, border, shadow, grid, comparison, or candidate sheet.
+- No extra text, logo, signature, watermark, border, photograph/card shadow, grid, comparison, or candidate sheet; only a necessary lower-subject contact shadow may follow the resolved medium.
 - Every visible component was generated together; the delivered artifact is one image only.

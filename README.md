@@ -68,7 +68,7 @@ WaytoAGI 认证讲师 & 视频学社主理人 & AI工具测评专家
 
 ## 它解决了什么
 
-- v1.3.0 默认一张原图交付一张完整成品；下方即梦示例明确改为四张独立候选，不合成四宫格。
+- v1.3.1 默认一张原图交付一张完整成品；下方即梦示例明确改为四张独立候选，不合成四宫格。
 - 不把下半区做成整幅照片的水彩复刻，只转绘一个主元素。
 - 采用“拆解 → 选择性保留 → 蒸馏 → 重构”：只保留主体和零至三个直接相连的辨识线索，明确删除可识别的完整背景。
 - 不写死 Image Gen、即梦、豆包或其他模型，根据当前 Agent 的真实能力选择执行方式。
@@ -152,12 +152,12 @@ gemini skills install https://github.com/yinxiaowai/xiaowai-photo-poetic-postcar
 
 无需安装项目，也无需让 Agent 读取项目首页。上传一张照片，把下面的**在线 MD 链接**发给 Agent；如果它不能读取链接，下载 MD 后作为附件上传，或复制全文。
 
-当前发布版：**v1.3.0**。在线阅读锁定该版本；固定下载入口跟随 GitHub 最新正式 Release。
+当前发布版：**v1.3.1**。在线阅读锁定该版本；固定下载入口跟随 GitHub 最新正式 Release。
 
 | 语言 | 当前发布版在线 MD（推荐发给 Agent） | 最新发布版 MD 下载（作为附件） |
 | --- | --- | --- |
-| 中文 | [中文完整绘图规范 · v1.3.0](https://github.com/yinxiaowai/xiaowai-photo-poetic-postcard/blob/v1.3.0/references/photo-poetic-postcard-prompt.zh-CN.md) | [下载中文 MD](https://github.com/yinxiaowai/xiaowai-photo-poetic-postcard/releases/latest/download/photo-poetic-postcard-prompt.zh-CN.md) |
-| English | [English complete guide · v1.3.0](https://github.com/yinxiaowai/xiaowai-photo-poetic-postcard/blob/v1.3.0/references/photo-poetic-postcard-prompt.en.md) | [Download English MD](https://github.com/yinxiaowai/xiaowai-photo-poetic-postcard/releases/latest/download/photo-poetic-postcard-prompt.en.md) |
+| 中文 | [中文完整绘图规范 · v1.3.1](https://github.com/yinxiaowai/xiaowai-photo-poetic-postcard/blob/v1.3.1/references/photo-poetic-postcard-prompt.zh-CN.md) | [下载中文 MD](https://github.com/yinxiaowai/xiaowai-photo-poetic-postcard/releases/latest/download/photo-poetic-postcard-prompt.zh-CN.md) |
+| English | [English complete guide · v1.3.1](https://github.com/yinxiaowai/xiaowai-photo-poetic-postcard/blob/v1.3.1/references/photo-poetic-postcard-prompt.en.md) | [Download English MD](https://github.com/yinxiaowai/xiaowai-photo-poetic-postcard/releases/latest/download/photo-poetic-postcard-prompt.en.md) |
 
 旧版本链接不会自动变成新版；需要更新时，从本页重新复制当前发布版链接。任何链接都不能强制清除第三方 Agent 的缓存；若仍读到旧内容，请下载 MD 并上传附件。[版本与更新说明](docs/PROMPT_VERSIONS.md)
 
@@ -171,26 +171,26 @@ gemini skills install https://github.com/yinxiaowai/xiaowai-photo-poetic-postcar
 
 #### 即梦：只生图，不添加技能
 
-上传原图后复制。用户已反馈此用法在即梦测试通过；四张要求是本次明确覆盖 v1.3.0 的默认单张交付。
+上传原图后复制。此使用流程曾由用户在 v1.3.0 测试通过；下方已切换到 v1.3.1，四张要求明确覆盖默认单张交付。新版按所选媒介处理外围，折纸等其他风格不再默认套用水彩晕染；此修正尚不代表新一轮生图实测通过。
 
 ```text
 请完整读取并使用这份绘图规范：
-https://github.com/yinxiaowai/xiaowai-photo-poetic-postcard/blob/v1.3.0/references/photo-poetic-postcard-prompt.zh-CN.md
+https://github.com/yinxiaowai/xiaowai-photo-poetic-postcard/blob/v1.3.1/references/photo-poetic-postcard-prompt.zh-CN.md
 
-按规范处理我上传的原图，使用图片 5.0 Lite 模型，生成四张独立的 3:4 竖版明信片供我选择。本次将单张交付改为四张：保持同一个核心主体，通过下方主体的位置、大小、文字排版、适配字体和外围晕染形成设计差异，其余要求不变。每张均为完整明信片，不合成四宫格；实际生图保留完整五段指令，不简化遗漏。
+按规范处理我上传的原图，使用图片 5.0 Lite 模型，生成四张独立的 3:4 竖版明信片供我选择。本次将单张交付改为四张：保持同一个核心主体，通过下方主体的位置、大小、文字排版、适配字体和与所选风格一致的外围处理形成设计差异，其余要求不变。每张均为完整明信片，不合成四宫格；实际生图保留完整五段指令，不简化遗漏。
 
 本次仅生成图片，不创建或安装技能。若无法读取规范全文，请说明并停止。
 ```
 
 #### 即梦：生图后提供“添加技能”卡片
 
-用户已反馈以下精简版在新对话测试通过。卡片需用户点击确认；这是即梦内创建可复用技能，不代表所有平台都支持从 GitHub 安装项目。
+“生图后添加技能”的精简流程此前已由用户在新对话测试通过，下方链接及外围处理用语已同步新版。卡片需用户点击确认；这是即梦内创建可复用技能，不代表所有平台都支持从 GitHub 安装项目。
 
 ```text
 请完整读取这份绘图规范：
-https://github.com/yinxiaowai/xiaowai-photo-poetic-postcard/blob/v1.3.0/references/photo-poetic-postcard-prompt.zh-CN.md
+https://github.com/yinxiaowai/xiaowai-photo-poetic-postcard/blob/v1.3.1/references/photo-poetic-postcard-prompt.zh-CN.md
 
-按规范处理我上传的原图，使用图片 5.0 Lite 模型，生成四张独立的 3:4 竖版明信片供我选择。本次将单张交付改为四张：保持同一个核心主体，通过下方主体的位置、大小、文字排版、适配字体和外围晕染形成设计差异，其余要求不变。每张均为完整明信片，不合成四宫格；实际生图保留完整五段指令，不简化遗漏。
+按规范处理我上传的原图，使用图片 5.0 Lite 模型，生成四张独立的 3:4 竖版明信片供我选择。本次将单张交付改为四张：保持同一个核心主体，通过下方主体的位置、大小、文字排版、适配字体和与所选风格一致的外围处理形成设计差异，其余要求不变。每张均为完整明信片，不合成四宫格；实际生图保留完整五段指令，不简化遗漏。
 
 生成后，将上述通用规则保存为“照片诗意明信片”技能，提供带“添加技能”按钮的卡片供我确认，不要固定本次照片的主体和文案，也不要仅回复“已安装”。若无法读取全文或创建技能卡片，请明确说明。
 ```
@@ -224,6 +224,7 @@ https://github.com/yinxiaowai/xiaowai-photo-poetic-postcard/blob/v1.3.0/referenc
 | 画布 | 3:4，1080×1440 | 4:5、1:1、9:16 或自定义像素 |
 | 上下占比 | 严格各 50% | 用户可明确调整约 40%–65%；Agent 不得自行漂移；照片铺满顶部和左右边缘 |
 | 转绘媒介 | 透明水彩 + 轻水粉 + 彩铅 | 水墨、版画、拼贴纸感、克制数字绘画等 |
+| 边缘与外围 | 默认水彩使用柔和渗边与外围晕染 | 自定义风格按媒介分支同步切换；折纸等及未列出风格默认干净外围，只有用户明确要求才混合水彩 |
 | 主体尺度 | 中等偏小、随复杂度自适应 | 横向/复杂主体约占下方宽度 55%–70%；人物、动物、圆环等约 40%–55% |
 | 主体位置 | 根据轮廓与负空间决定 | 可偏左、居中或偏右；至少保留约 45% 连续干净纸面 |
 | 纸张 | 暖米白纤维纸 | 冷灰白、手工纸、平滑美术纸 |

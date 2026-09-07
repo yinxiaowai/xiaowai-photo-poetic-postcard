@@ -19,6 +19,13 @@ ENTRY_DOCUMENTS = ("README.md", "README_EN.md", "docs/INSTALLATION.md", "docs/IN
 def check_entries(root: Path = ROOT) -> list[str]:
     tag = "v" + (root / "VERSION").read_text(encoding="utf-8").strip()
     errors = []
+    for name, prefix, suffix in (
+        (PROMPTS[0], "规范版本：", "。"),
+        (PROMPTS[1], "Guide version: ", "."),
+    ):
+        path = root / "references" / name
+        if not path.is_file() or f"{prefix}{tag}{suffix}" not in path.read_text(encoding="utf-8"):
+            errors.append(f"references/{name}: visible guide version must match VERSION ({tag})")
     pattern = re.compile(re.escape(REPO_URL) + r"/blob/([^/]+)/references/photo-poetic-postcard-prompt\.[\w-]+\.md")
     for relative in ENTRY_DOCUMENTS:
         text = (root / relative).read_text(encoding="utf-8")

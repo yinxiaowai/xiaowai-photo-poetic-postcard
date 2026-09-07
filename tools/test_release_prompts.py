@@ -13,6 +13,9 @@ import release_prompts as release
 class ReleasePromptTests(unittest.TestCase):
     def entries(self, root):
         (root / "VERSION").write_text("1.3.0\n", encoding="utf-8")
+        (root / "references").mkdir(exist_ok=True)
+        for name, header in zip(release.PROMPTS, ("规范版本：v1.3.0。", "Guide version: v1.3.0.")):
+            (root / "references" / name).write_text(header, encoding="utf-8")
         text = "\n".join(
             f"{release.REPO_URL}/{suffix}"
             for name in release.PROMPTS
@@ -46,6 +49,21 @@ class ReleasePromptTests(unittest.TestCase):
             errors = release.check_entries(root)
             self.assertTrue(any("main" in error for error in errors))
             self.assertTrue(any("relative" in error for error in errors))
+
+    def test_stale_or_missing_visible_version_fails(self):
+        for header in ("", "规范版本：v1.2.0。", "规范版本：v1.3.01。"):
+            with self.subTest(header=header), tempfile.TemporaryDirectory() as temp:
+                root = Path(temp)
+                self.entries(root)
+                (root / "references" / release.PROMPTS[0]).write_text(header, encoding="utf-8")
+                self.assertTrue(any("visible guide version" in error for error in release.check_entries(root)))
+
+    def test_missing_guide_fails(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self.entries(root)
+            (root / "references" / release.PROMPTS[1]).unlink()
+            self.assertTrue(any("visible guide version" in error for error in release.check_entries(root)))
 
     def test_export_uses_tagged_bytes_and_manifest(self):
         with tempfile.TemporaryDirectory() as temp:

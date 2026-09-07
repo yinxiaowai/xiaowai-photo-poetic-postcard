@@ -1,5 +1,7 @@
 # Photo Poetic Postcard | Standalone Drawing Guide
 
+Guide version: v1.3.1. This identifier is for verification only; do not draw it in the artwork.
+
 Read this entire document, inspect the user's uploaded photo, and create one complete postcard with the original photograph above, one illustrated subject below, a Chinese title and short note.
 
 This document works independently. Upload the photo and attach this MD file to an image-capable Agent, or paste its full text into the conversation. No Skill installation, project homepage, other file, code, or variable form is required. Make the visual decisions yourself when the user supplies no additional settings; apply explicit customization as described in section 12.
@@ -39,7 +41,7 @@ Work in this order: observe and separate, choose a subject, retain identity, rem
 
 Preserve the overall silhouette, important proportions, principal structure, pose, and representative colors. Select zero to three particularly useful identity cues, such as arches, roof tiers, a life jacket, or an interacting object.
 
-The cue limit does not mean reducing a person's face or a building's structure to three strokes. The subject remains recognizable and may contain moderate material detail and watercolor variation.
+The cue limit does not mean reducing a person's face or a building's structure to three strokes. The subject remains recognizable and may contain moderate detail in the selected medium.
 
 For each supporting element, consider:
 
@@ -69,6 +71,8 @@ Extraction does not mean shrinking the photograph, lowering its opacity, blurrin
 | Natural landscape | One distinctive natural form or landform | Competing formations, broad sky, scattered scenery | A light wash close to the silhouette |
 
 These are observation guides, not identical recipes for every building or person. A complex subject can carry richer internal detail; do not restore scenery merely to make it fuller.
+
+Water color, washes, and grounding marks in this table apply only when allowed by the medium branch in section 9. In origami or another custom style, attached cues use that same medium; reflections or environmental color do not authorize a watercolor backdrop.
 
 ## 5. Canvas and panel relationship [Canvas structure]
 
@@ -103,15 +107,17 @@ Faithfulness means preserving visible source content. It does not mean that ever
 
 Reinterpret only the selected subject. Default to transparent watercolor with a little light gouache and necessary colored-pencil structure, retaining identity, depth, and key colors.
 
+The following strokes and dissolving edges belong to the default watercolor treatment, not every custom style:
+
 - Use transparent layers, natural bleeding edges, and restrained wet/dry variation.
 - Use gouache sparingly for local volume or highlights rather than heavy opaque masses.
 - Use pencil to explain important structure, not every brick, leaf, or twig.
 - Concentrate detail where recognition requires it; simplify peripheral areas and let edges dissolve into paper.
 - If the source already cuts off the subject, retain a natural partial view or fade the crop edge. Do not invent unseen structures or limbs merely to complete a silhouette.
 
-Richness should come from the subject's own material, light, detail, and brushwork. If too sparse, add modest internal detail and soft washes spreading beyond the silhouette. If too full, remove the environment first, then reduce the subject and wash.
+Richness should come from the subject's own material, light, detail, and brushwork. If too sparse, first adjust subject detail, scale, offset, and copy layout; add perimeter washes only when enabled by section 9. If too full, remove the environment first, then reduce the subject and any enabled surrounding treatment. Empty paper needs no replacement decoration.
 
-A user-requested ink, printmaking, pencil, or other medium changes the lower treatment while preserving subject selection and panel roles.
+A custom medium replaces material, edges, and surrounding treatment together under section 9, not just the style name while retaining watercolor bleeding. Preserve a natural partial source crop without mandatory fading or invented unseen structures; retain subject selection and panel roles.
 
 ## 8. Scale, position, and breathing room
 
@@ -132,7 +138,23 @@ Default to warm, low-saturation ivory paper below, with fine, subdued fibers. Av
 
 Select colors actually present in the source: a principal subject color for recognition, a deeper tone for structure and copy, and a lighter supporting tone. Gentle desaturation is allowed; do not make every photo use the same green or orange palette.
 
-By default, use one connected, soft, translucent watercolor wash behind the subject, forming a single visual unit with it. This is atmospheric color, not a separate object or merely a grounding shadow.
+### Resolve the medium before edges and surroundings
+
+A wash is a medium effect, not mandatory postcard decoration. Use these explicit branches rather than asking the image model to guess what fits:
+
+| User setting | Edge and surrounding treatment |
+| --- | --- |
+| No custom style | Keep the default watercolor/gouache/pencil blend and enable the wash below |
+| Explicit watercolor, ink wash, or watercolor-based light wash | Use the corresponding wet-medium diffusion and surrounding wash |
+| Any other custom style, including unlisted styles | Do not inherit watercolor washes, wet bleeding, or dissolving contours; use the selected medium's edges and clean surrounding paper |
+
+Explicit no-wash, dry/crisp-edge, or surrounding-treatment requests take precedence. Origami, paper cutting, printmaking, line drawing, and pixel art belong to the third branch. Do not add watercolor based on aesthetic preference. Mixed media (for example, an origami subject with a watercolor background) is allowed only when explicitly requested by the user, still without restoring the full scene.
+
+Origami uses paper planes, creases, and crisp folded edges, not contours dissolving into paper. A subtle contact shadow directly against the lower subject may support its volume when necessary; it must not become a halo, broad backdrop, photograph shadow, or floating-card shadow. Other custom styles likewise need no decorative backing to replace a disabled wash.
+
+### Apply only when a wash is enabled
+
+Use one connected, soft, translucent source-colored wash behind the subject: watercolor in the default treatment, corresponding ink diffusion for ink wash. It forms a single visual unit with the subject, not a separate object or merely a grounding shadow.
 
 - Let it spread loosely beyond the upper and side contours, with uneven pigment, wet bleeding edges, and gentle asymmetry fading into paper. Avoid a uniform halo. Some grounding below is fine, but do not reduce the wash to a strip under the subject.
 - Do not form a rectangular image backing, complete circular disk, or large opaque geometric shape.
@@ -194,7 +216,7 @@ Explicit user choices override defaults. Resolve unspecified settings through ob
 | --- | --- | --- |
 | Aspect ratio or pixel size | Recompose for the requested dimensions | One complete work; no distorted ratio |
 | Panel share | Recalculate the two heights | Photography above, extracted subject below |
-| Illustration style | Change medium, strokes, and detail density | Subject identity and structure |
+| Illustration style | Replace material, strokes, edges, and surroundings together under section 9 | Subject identity, structure, and panel roles |
 | Subject scale and offset | Make it smaller, airier, or moderately larger | Clear space outside the silhouette |
 | Paper and color mood | Warm/cool white, smooth/fiber paper, modest color adjustment | No corresponding art filter over the photograph |
 | Title, note, language, type | Use exact requested copy; omit note or all text if requested | Readability and lower-only placement when shown |
@@ -209,6 +231,8 @@ A host that can inspect the photo and generate from a reference image can use th
 If you call a separate image tool, turn your observations into complete, specific drawing instructions, preserving every applicable requirement without summarizing away the subject, omission list, split, copy, palette, or whitespace. Attach the original photo. You may resolve general guidance into image-specific decisions; tool-capability explanations should not appear in the artwork.
 
 Use separate sections for [Canvas structure], [Upper panel — source photo lock], [Lower panel — one extracted subject], [Typography and layout], and [Prohibitions and delivery]. Populate each with concrete decisions; do not send empty headings or depend on another file.
+
+Before generation, compile only the selected section-9 material, edge, and surrounding treatment into concrete instructions; do not pass the decision table to the image model. For origami and other non-wet custom styles, remove default watercolor washes, bleeding, and dissolving contours from the final prompt and sparse-layout fixes. Do not request crisp edges and watercolor dissolution simultaneously unless the user explicitly requests the mixed treatment.
 
 - **Vision and generation:** analyze and generate directly. Do not require user approval of a prompt by default.
 - **Vision only:** return a complete image-specific drawing instruction and explain that it needs a reference-image generator. Repeating this generic document is not completed photo analysis.
@@ -228,7 +252,7 @@ Check composition before fine detail:
 5. Resolve copy and typography before generation; this workflow requires no post-generation OCR, typo detection, correction, or typo-triggered retry.
 6. There is no extra decoration, instructional copy, logo, signature, watermark, frame, or candidate grid.
 
-Correct the cause: remove restored scenery for a full-scene repeat; reduce the subject and wash for crowding; add internal detail and soft perimeter washes for sparseness; reposition copy when cramped.
+Correct the cause: remove restored scenery for a full-scene repeat; reduce the subject and enabled surroundings for crowding; adjust subject detail, scale, offset, and copy layout for sparseness, adding washes only when enabled under section 9; reposition copy when cramped. Never bring back disabled watercolor effects merely to fill space.
 
 Corrections must still regenerate or edit the complete work through image generation, never programmatic stitching, cropping of the finished art, or text overlays. If the tool persistently cannot satisfy the request, state the failed criterion rather than claiming compliance or generating indefinitely.
 

@@ -132,12 +132,12 @@ Use xiaowai-photo-poetic-postcard to turn this photo into one poetic postcard.
 
 No project installation or repository-homepage access is needed. Upload a photo and send the online MD link directly to the Agent. If it cannot read URLs, download and attach the MD, or paste its full text.
 
-Current release: **v1.3.0**. Online links pin that release; download links follow GitHub's latest stable Release.
+Current release: **v1.3.1**. Online links pin that release; download links follow GitHub's latest stable Release.
 
 | Language | Current release online MD (send to an Agent) | Latest release MD (download and attach) |
 | --- | --- | --- |
-| Chinese | [Complete Chinese guide · v1.3.0](https://github.com/yinxiaowai/xiaowai-photo-poetic-postcard/blob/v1.3.0/references/photo-poetic-postcard-prompt.zh-CN.md) | [Download Chinese MD](https://github.com/yinxiaowai/xiaowai-photo-poetic-postcard/releases/latest/download/photo-poetic-postcard-prompt.zh-CN.md) |
-| English | [Complete English guide · v1.3.0](https://github.com/yinxiaowai/xiaowai-photo-poetic-postcard/blob/v1.3.0/references/photo-poetic-postcard-prompt.en.md) | [Download English MD](https://github.com/yinxiaowai/xiaowai-photo-poetic-postcard/releases/latest/download/photo-poetic-postcard-prompt.en.md) |
+| Chinese | [Complete Chinese guide · v1.3.1](https://github.com/yinxiaowai/xiaowai-photo-poetic-postcard/blob/v1.3.1/references/photo-poetic-postcard-prompt.zh-CN.md) | [Download Chinese MD](https://github.com/yinxiaowai/xiaowai-photo-poetic-postcard/releases/latest/download/photo-poetic-postcard-prompt.zh-CN.md) |
+| English | [Complete English guide · v1.3.1](https://github.com/yinxiaowai/xiaowai-photo-poetic-postcard/blob/v1.3.1/references/photo-poetic-postcard-prompt.en.md) | [Download English MD](https://github.com/yinxiaowai/xiaowai-photo-poetic-postcard/releases/latest/download/photo-poetic-postcard-prompt.en.md) |
 
 Old version links stay old: copy the current link from this page when updating. No URL can forcibly clear a third-party Agent's cache. Download and attach the MD if it still reads stale content. See [Version and update notes](docs/PROMPT_VERSIONS.md).
 
@@ -151,7 +151,7 @@ The [Xiaoqikong example](references/example-xiaoqikong-compiled-prompt.zh-CN.md)
 
 ### Jimeng: generate only, or generate and add a reusable skill
 
-The [Chinese README's Method 2 examples](README.md#方式二把-md-当作完整提示词直接使用) include two copy-ready prompts reported as successful by the user in Jimeng: generation only, and generation followed by a native “添加技能” card for user confirmation. Both explicitly override v1.3.0's single-result default with four independent 3:4 candidates using 图片 5.0 Lite. All four retain the same core subject and vary the lower composition, typography, and washes; they are not a four-panel image. These are platform-specific usage requests, not changes to the model-neutral drawing guide or a promise of GitHub installation support in every Agent.
+The [Chinese README's Method 2 examples](README.md#方式二把-md-当作完整提示词直接使用) include two copy-ready flows previously reported as successful by the user in Jimeng on v1.3.0: generation only, and generation followed by a native “添加技能” card for confirmation. Their links and surrounding-treatment wording now use v1.3.1; no new image-generation success is claimed for this correction. Both explicitly override the single-result default with four independent 3:4 candidates using 图片 5.0 Lite. All four retain the same core subject and vary the lower composition, typography, and medium-compatible surroundings, not a four-panel image. These are platform-specific requests, not a promise of GitHub installation support in every Agent.
 
 ## Cross-Agent execution design
 
@@ -180,6 +180,7 @@ These are execution rules and design goals, not evidence of successful testing i
 | Canvas | 3:4, 1080 × 1440 | 4:5, 1:1, 9:16, custom pixels |
 | Panel split | Strict 50/50 | Explicitly adjustable to about 40–65%; the Agent must not drift automatically; photo remains flush to top and side edges |
 | Medium | transparent watercolor, light gouache, colored pencil | ink wash, printmaking, paper collage, restrained digital paint |
+| Edges and surroundings | Default watercolor uses diffusion and a perimeter wash | Switch with the medium; other custom styles, including unlisted ones, use clean surroundings unless the user explicitly requests mixed media |
 | Subject scale | moderately compact and complexity-aware | horizontal/detailed subjects about 55–70% lower width; people, animals, and rings about 40–55% |
 | Subject position | negative-space driven | left, center, or right, while keeping at least about 45% visibly clean paper |
 | Paper | warm ivory fiber | cool gray-white, handmade fiber, smooth museum stock |

@@ -97,9 +97,9 @@ WorkBuddy 要求压缩包内部以 `skills/{skill-name}/SKILL.md` 组织，并�
 
 1. 打开具备图片理解与生成能力的 Agent/创作入口。
 2. 上传一张原图。
-3. 发送 [当前发布版中文 MD · v1.3.0](https://github.com/yinxiaowai/xiaowai-photo-poetic-postcard/blob/v1.3.0/references/photo-poetic-postcard-prompt.zh-CN.md) 链接；无法读取时，[下载最新发布版 MD](https://github.com/yinxiaowai/xiaowai-photo-poetic-postcard/releases/latest/download/photo-poetic-postcard-prompt.zh-CN.md) 后上传附件，或复制全文。
+3. 发送 [当前发布版中文 MD · v1.3.1](https://github.com/yinxiaowai/xiaowai-photo-poetic-postcard/blob/v1.3.1/references/photo-poetic-postcard-prompt.zh-CN.md) 链接；无法读取时，[下载最新发布版 MD](https://github.com/yinxiaowai/xiaowai-photo-poetic-postcard/releases/latest/download/photo-poetic-postcard-prompt.zh-CN.md) 后上传附件，或复制全文。
 4. 用自然语言补充想调整的尺寸、比例、风格或文字；没有额外要求时直接执行。
-5. v1.3.0 默认一张完整成品；明确要求四张时，输出四张独立候选，不合成四宫格。
+5. v1.3.1 默认一张完整成品；明确要求四张时，输出四张独立候选，不合成四宫格。
 
 即梦的“只生图”和“生图后添加技能”两段使用提示词见 [首页方式二](../README.md#方式二把-md-当作完整提示词直接使用)，用户已反馈测试通过。“添加技能”指即梦内创建可复用技能卡片并由用户确认，不等于从任意 GitHub 仓库安装；其他 Agent 是否支持要以其实际能力为准。已保存的技能不会因仓库更新而自动同步。[版本与更新说明](PROMPT_VERSIONS.md)
 
